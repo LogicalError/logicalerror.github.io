@@ -112,6 +112,39 @@
       
     #content .group:nth-child(odd)  .example { float:left  }
     #content .group:nth-child(even) .example { float:right }
+      
+    .topLink
+    {
+      text-align: center;
+      font-family: Oswald;
+      font-size: 20px;
+
+      border-style: solid;
+      border-color: black;
+      border-width: 1px;
+      border-radius: 5px;
+      margin-left: 100px;
+      margin-right: 100px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: #808080;
+    }
+
+    .topLink a:link,
+    .topLink a:visited,
+    .topLink a:hover,
+    .topLink a:active
+    {
+      color: rgb(255, 255, 255);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    
+    .topLink a:hover,
+    .topLink a:active
+    {
+        text-decoration: underline;
+    }
 
     #content .group:nth-child(even) div h1 {
       color: rgb(255, 255, 255);
@@ -288,7 +321,9 @@ padding-right: 10px;
 		    </div>
 	    </div>
     </div>
-      
+    <div class="topLink"><a href="https://github.com/LogicalError/realtime-CSG-for-unity/issues">Click here to request a feature<br /> or to let us know about a bug ..</a>&nbsp;&nbsp;</div>
+    <br />
+    <br />
     <div class="group">
       <img class="example" src="assets/operations.gif"/>
       <div>

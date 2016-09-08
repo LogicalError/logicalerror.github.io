@@ -2,6 +2,11 @@
 <html>
 
 <head>
+  <title>RealtimeCSG</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Oswald|Roboto+Condensed" rel="stylesheet" type="text/css">
+  <style type="text/css">
+  </style>
   <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
   <link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
@@ -20,295 +25,6 @@
   <meta name="msapplication-TileImage" content="ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
   <meta charset="utf-8">
-  <title>RealtimeCSG</title>
-  <link href="https://fonts.googleapis.com/css?family=Roboto|Oswald|Roboto+Condensed" rel="stylesheet" type="text/css">
-  <style type="text/css">
-    html, body {
-      width: 100%;
-      height: 100%;
-      margin: 0px;
-    }
-    body {
-	background-color: rgb(199, 197, 197);
-	background-image: -moz-radial-gradient(50% 50%, circle, rgb(255, 255, 255) 0%, rgb(199, 197, 197) 100%);
-	background-image: -webkit-radial-gradient(50% 50%, circle, rgb(255, 255, 255) 0%, rgb(199, 197, 197) 100%);
-	background-image: -o-radial-gradient(50% 50%, circle, rgb(255, 255, 255) 0%, rgb(199, 197, 197) 100%);
-	background-image: -ms-radial-gradient(50% 50%, circle, rgb(255, 255, 255) 0%, rgb(199, 197, 197) 100%);
-	background-image: radial-gradient(50% 50%, circle, rgb(255, 255, 255) 0%, rgb(199, 197, 197) 100%);
-    	background-repeat: no-repeat;
-	background-attachment: fixed;
-    }
-    #content {
-      display: block;
-      position: relative;
-      width: 1024px;
-      margin: 0px auto;
-      border-style: solid;
-      border-width: 0px 1px;
-      border-image-source: none;
-      border-color: rgb(56, 56, 56);
-      left: 0px;
-      top: 0px;
-      background-image: none;
-      background-color: rgba(0, 0, 0, 0.247059);
-      padding-top: 40px;
-      padding-bottom: 40px;
-      padding-left:0px;
-      padding-right:0px;
-      overflow:hidden;
-    }
-    .bar {
-      display: block;
-      position: fixed;
-      left: 0px;
-      top: 0px;
-      width: 100%;
-      height: 30px;
-      margin: 0px;
-        z-index: 100;
-      background-image: none;
-      background-color: rgb(42, 42, 42);
-    }
-    .title {
-      position: absolute;
-      width: 200px;
-      font-family: 'Roboto Condensed';
-      font-weight: bold;
-      font-size: 24px;
-      height: 30px;
-      margin-top: auto;
-      margin-bottom: auto;
-      display: inline-block;
-      border-color: rgb(0, 0, 0);
-      opacity: 1;
-      border-image-source: none;
-      color: rgb(255, 255, 255);
-      top: 0px;
-      left: 0px;
-      text-align: left;
-    }
-
-     #content .group .example {
-      width: 400px;
-      height: 400px;
-      padding: 0px;
-
-      border-style: solid;
-      border-width: 1px;
-      border-radius: 10px;
-      margin-left: 20px;
-      margin-right: 20px;
-      vertical-align: middle;
-    }
-    .group {
-      padding-top: 10px;
-      padding-bottom: 60px;
-      clear: both;
-      height:400px;
-    }
-      
-    #content .group:nth-child(odd)  { text-align:left }
-    #content .group:nth-child(even) { text-align:right }
-      
-    #content .group:nth-child(odd)  .example { float:left  }
-    #content .group:nth-child(even) .example { float:right }
-      
-    .topLink
-    {
-      text-align: center;
-      font-family: Oswald;
-      font-size: 20px;
-
-      border-style: solid;
-      border-color: #555;
-      border-width: 1px;
-      border-radius: 7px;
-      margin: 0px;
-      margin-bottom: 8px;
-      padding: 13px;
-      padding-left: 20px;
-      padding-right: 20px;
-      height: 100%;
-      background-color: #333333;
-      color: rgb(255, 255, 255);
-      text-transform: uppercase;
-    }
-    .topLink:hover
-    {
-      border-color: white;
-    }
-
-    .topLink a:link,
-    .topLink a:visited,
-    .topLink a:hover,
-    .topLink a:active
-    {
-      color: rgb(255, 255, 255);
-      text-decoration: none;
-      text-transform: uppercase;
-    }
-    
-    .topLink a:hover,
-    .topLink a:active
-    {
-      text-decoration: none;
-    }
-    
-
-    #content div p,
-    #content div p {
-      font-family: 'Roboto Condensed';
-      font-weight: normal;
-      font-size: 23px;
-    }
-
-    #content div h1 {
-      color: rgb(255, 255, 255);
-      font-family: Oswald;
-      font-weight: bold;
-      font-size: 30px;
-      text-transform: uppercase;
-    }
-
-    #content .group:nth-child(even) div h1 {
-      margin-bottom: 10px;
-      margin-top: 60px;
-    }
-      
-    #content .group:nth-child(odd)  div h1 {
-      margin-bottom: 10px;
-      margin-top: 60px;
-    }
-      
-    .videoHeader {
-      margin-bottom: 0px;
-      color: rgb(255, 255, 255);
-      font-family: Oswald;
-      font-weight: bold;
-      font-size: 30px;
-
-      text-align: center;
-      text-transform: uppercase;
-      position:relative;
-      width: 100%;
-      top: 0;
-      left: 0;
-      height: 600px;
-      overflow:hidden;
-    }
-
-    .videoHeader div {
-      position:absolute;
-      width: 100%;
-      top: 0;
-      left: 0;
-    }
-
-    #content .group:nth-child(even) div p,
-    #content .group:nth-child(odd)  div p {
-      padding:0px;
-      margin:0px;
-      margin-top: 20px;
-      font-family: 'Roboto Condensed';
-      font-weight: normal;
-      font-size: 23px;
-    }
-
-    #video {
-	    width: 100%;
-        z-index: -1;
-      	height: 600px;
-        overflow: hidden;
-    }
-
-    .overlay {
-	background: -moz-linear-gradient(top, rgba(178,178,178,1) 0%, rgba(178,178,178,1) 1%, rgba(178,178,178,0) 15%, rgba(178,178,178,0) 75%, rgba(178,178,178,1) 98%, rgba(178,178,178,1) 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(top, rgba(178,178,178,1) 0%,rgba(178,178,178,1) 1%,rgba(178,178,178,0) 15%,rgba(178,178,178,0) 75%,rgba(178,178,178,1) 98%,rgba(178,178,178,1) 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom, rgba(178,178,178,1) 0%,rgba(178,178,178,1) 1%,rgba(178,178,178,0) 15%,rgba(178,178,178,0) 75%,rgba(178,178,178,1) 98%,rgba(178,178,178,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2b2b2', endColorstr='#b2b2b2',GradientType=0 ); /* IE6-9 */
-
-      	height: 600px;
-      	overflow:hidden;
-    }
-
-    .overlayText
-    {
-       margin-top:440px;
-	padding-bottom:10px;
-	background: rgba(0,0,0,0.5);
-    }
-
-    .large
-    {
-      font-size: 60px;
-    }
-
-    .unity-logo
-    {
-      vertical-align:middle;
-      padding-bottom:6px;
-      padding-left:6px;
-	width:169px;
-        height:62px;
-    }
-
-    .csg-logo-tiny
-    {
-      vertical-align:middle;
-      padding-bottom:3px;
-    }
-
-    .csg-logo-large
-    {
-      vertical-align:middle;
-      padding-bottom:7px;
-      padding-right:6px;
-    }
-
-    .real-time {
-      position: relative;
-      display: inline;
-      color: rgb(255, 102, 0);
-      text-transform: lowercase;
-    }
-    .CSG-small {
-      position: relative;
-      top: 1px;
-    }
-    .CSG {
-      position: relative;
-      top: 4px;
-    }
-
-
-    .contacts {
-      position: absolute;
-      width: 300px;
-      height: 30px;
-      margin-top: auto;
-      margin-bottom: auto;
-      display: inline-block;
-      opacity: 1;
-      top: 1px;
-      right: 5px;
-
-      text-align: right;
-      vertical-align:middle;
-      padding-bottom: 3px;
-    }
-
-    .twitter {
-padding-right: 10px;
-    }
-    .email {
-position:relative;
-top: 2px;
-padding-right: 10px;
-    }
-
-
-    .clear { clear:both; }
-  </style>
 </head>
 
 <body>
@@ -317,456 +33,72 @@ padding-right: 10px;
       &nbsp;&nbsp;<img src="assets/logo3_24.png" class="csg-logo-tiny" />
       <span class="real-time">realtime</span>&nbsp;<span class="CSG-small">CSG </span>&nbsp;
     </div>
+    <div class="barLinks"><span>HOME</span><a href="features.html">FEATURES</a><a href="getstarted.html">GET STARTED</a></div>
     <div class="contacts">
 	<span class="email"><a href="mailto:sander.vanrossen@gmail.com"><img src="assets/ic_email_white_24dp_1x.png" /></a></span>
 	<span class="twitter"><a href="https://twitter.com/logicalerror"><img src="assets/twitter.png" /></a></span>
     </div>
   </div>
-  <center id="content">
+
+  <center id="header">
     <div class="videoHeader">
 	    <div id="video" onMouseOver="">
             <iframe data-src="https://www.youtube.com/embed/xXMF0ODNInU?autoplay=1&amp;controls=0&amp;disablekb=1&amp;iv_load_policy=3&amp;loop=1&amp;modestbranding=1&amp;enablejsap0=1&amp;showinfo=0&amp;playlist=xXMF0ODNInU&amp;html5=1&amp;VQ=hd720&amp;origin=https://logicalerror.github.io" frameborder="0" class="" style="width: 1024px; height: 580px;" src="https://www.youtube.com/embed/xXMF0ODNInU?autoplay=1&amp;controls=0&amp;disablekb=1&amp;iv_load_policy=3&amp;loop=1&amp;modestbranding=1&amp;enablejsapi=0&amp;showinfo=0&amp;playlist=xXMF0ODNInU&amp;html5=1&amp;VQ=hd720&amp;origin=https://logicalerror.github.io"></iframe> 
 	    </div>
         <div class="overlay">
 		    <div class="overlayText">
-		        <span class="large"><img src="assets/logo3_72.png" class="csg-logo-large" /><span class="real-time">realtime</span>&nbsp;<span class="CSG">CSG</span></span><br/>
-	            EASY, FAST AND SCALABLE LEVEL DESIGN FOR <img class="unity-logo" src="assets/unity-logo-white-small.png" />
+		        <span class="large"><span class="csg-logo-large"></span><span class="real-time">realtime</span>&nbsp;<span class="CSG">CSG</span></span><br/>
+	            EASY, FAST AND SCALABLE LEVEL DESIGN FOR <span class="unity-logo" ></span>
 		    </div>
 	    </div>
     </div>
-      <center>
-          <table cellpadding="0" cellspacing="0" style="padding: 0px; margin: 0px;">
-              <tr>
-                  <td align="right" style="padding-right:5px;">
-                      <a href="https://www.assetstore.unity3d.com/en/#!/content/69542"><img src="assets/buynow_unity.png" width="380" height="133" /></a>
-                  </td>
-                  <td style="padding-right:5px;padding-left:5px;">
-                      <div class="topLink"><a href="http://prenominal.nl/updates/index.php">Download<br/>beta versions ..</a></div>
-                  </td>
-                  <td align="left" style="padding-left:6px;">
-                      <div class="topLink"><a href="https://github.com/LogicalError/realtime-CSG-for-unity/issues">Request a feature<br /> or report a bug ..</a></div>
-                  </td>
-              </tr>
-          </table>
-      </center>
-      <div style="padding-left:20px;padding-bottom:20px">
-          <h1>Non destructive workflow</h1>
-          <p>With CSG you can block out levels and go back and forth between ideas <i>fast</i>, <br/>
-          you can easily reuse building blocks that negative shapes like <i>holes in the walls!</i></p>
-          <p>This allows you to drag doors, windows, pathways, large parts of a level to new places<br /> 
-          easily while never having to think about individual vertices, triangles <br/>
-          or invisible gaps in your geometry.</p>
-          <p>Don't like your changes? Just drag it back.<br/>Changed your mind about that window your dragged into your scene?<br />Just press delete, done.</p>
-      </div>
-      <div style="padding-left:20px;padding-bottom:20px;">
-        <h1>WHY NOT MAKE LEVELS USING MAYA/3DS-MAX/[Insert your favorite DCC tool here]?</h1>
-          <p>DCC packages are great for animation and making beautiful models.</p>
-          <p>When designing levels for a game, however, you want to start out with rough shapes first<br/> and make it pretty later. You want to be able to iterate <i>quickly</i>.</p>
-          <p>DCC packages and level design tools are not competing in the same space, <br/><i>they both solve a different problem, they're complimentary!</i></p>
-       </div>
-      <div style="padding-left:20px;padding-bottom:20px">
-          <h1>Feedback</h1>
-          <p>The release of this tool is not the end, it's just the beginning!<br/>
-              If you're running into issues be sure to submit a bug report!<br/>
-          If you really need a particular feature or have workflow issues, submit a feature request!</p>
-      </div>
-      <div style="padding-left:20px;">
-          <h1>Features</h1>
-      </div>
-          <br />
-          <div>
-              <div class="group">
-                  <img class="example" src="assets/operations.gif" />
-                  <div>
-                      <h1>MODELING WITH BRUSHES</h1>
-                      <p>With realtime CSG you can create your levels by<br /> combining brushes (simple primitives you can edit) that are either additive, subtractive or intersecting.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
+    <center>
+        <table cellpadding="0" cellspacing="0" style="padding: 0px; margin: 0px;">
+            <tr>
+                <td align="right" style="padding-right:5px;">
+                    <a href="https://www.assetstore.unity3d.com/en/#!/content/69542"><img src="assets/buynow_unity.png" width="380" height="133" /></a>
+                </td>
+                <td style="padding-right:5px;padding-left:5px;">
+                    <div class="topLink"><a href="http://prenominal.nl/updates/index.php">Download<br/>beta versions ..</a></div>
+                </td>
+                <td align="left" style="padding-left:6px;">
+                    <div class="topLink"><a href="https://github.com/LogicalError/realtime-CSG-for-unity/issues">Request a feature<br /> or report a bug ..</a></div>
+                </td>
+            </tr>
+        </table>
+    </center>
+  </center>
 
-              <div class="group">
-                  <img class="example" src="assets/hierarchy.gif" />
-                  <div>
-                      <h1>THE HIERARCHY DEFINES THE SHAPE</h1>
-                      <p>The final mesh is created by going through the hierarchy from top to bottom, adding, subtracting or intersecting brushes with each other.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
+  <center id="content">
+    <div style="padding-left:20px;padding-bottom:20px">
+        <h1>Non destructive, intuitive workflow</h1>
+        <p>With CSG you can easily reuse pieces and block out levels.<br />You can go back and forth between ideas <i>fast</i>.</p>
+        <p>Realtime CSG allows you to drag doors, windows, pathways, large parts of <br />
+            a level to new places easily while never having to think about individual <br />
+            vertices or triangles. Since CSG works with solid primitives, you never <br />
+            have to worry about gaps in your geometry and your physics meshes will be <br />
+            created automatically.</p>
+        <p>Everything created using CSG can be easily modified and<br />
+            adjusted you can keep tweaking until the very end of your project!</p>
+        <p>Changed your mind about that window your dragged into your scene?<br />
+            Just press delete, done! Want a new door in that wall? <br />
+            Just drag in that prefabed door that you created, that includes <br />
+            the hole in that wall for you. Don't like the placement of that door? <br />
+            Just move it, including the hole, in one motion!</p>
+    </div>
+    <div style="padding-left:20px;padding-bottom:20px;">
+    <h1>WHY NOT MAKE LEVELS USING YOUR FAVORITE DCC TOOL?</h1>
+        <p>DCC packages such as Maya or 3dsmax are great for animation and <br />making beautifully detailed models. When designing levels for a <br />
+            game, however, your needs are very different.<br /></p>
+        <p>You want to be able to iterate <i>a lot</i> and iterate <i>rapidly!</i><br />
+            DCC tools will have you focus on minute details when the design is not<br />
+            even fleshed out! You will just end up with lots of work that you can throw out.<br />
+            Realtime-CSG starts at the right end of things when it comes to game design;<br /> 
+            you start with rough shapes and work towards more details after the<br />
+            game design has settled.</p>
+        <p>If at the end you still want to use your DCC package for the tiniest of details,<br />
+             then you still have the option to export your CSG model to FBX.</p>
 
-              <div class="group">
-                  <img class="example" src="assets/donotrender.gif" />
-                  <div>
-                      <h1>THE MODEL IS YOUR MESH</h1>
-                      <p>The Model component holds the brushes with which you create the final mesh with.</p>
-                      <p>By selecting the model component you can make your brushes define a trigger, or make your final mesh static or dynamic.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/export.gif" />
-                  <div>
-                      <h1>EXPORT TO FBX</h1>
-                      <p>If you prefer to do your finishing touches in your favorite DCC package you can export your CSG model to an FBX file. Your in scene CSG model will automatically be swapped with your exported mesh so that when you change the FBX, it'll be reflected in the scene.</p>
-                      <p>Don't worry, you will always have the option to revert back to the original CSG model.</p>
-                      <p><i>available since version 1.100</i></p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/operationcomponent.gif" />
-                  <div>
-                      <h1>OPERATIONS ALLOW YOU TO GROUP THINGS</h1>
-                      <p>The Operation component allows you to group brushes together and do CSG operations on more complicated shapes.</p>
-                      <p>You can group selected brushes underneath an operation by pressing Cmd/Ctrl-G.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/operationcomponent2.gif" />
-                  <div>
-                      <h1>OPERATIONS DEFINE SUB-SHAPES</h1>
-                      <p>The operation component lets you define sub-shapes.<br />In this case a cylinder minus another cylinder.</p>
-                      <p>These sub-shapes can then be added, removed or intersected with other parts of the model.</p>
-                      <p>Pass-through behaves as if there is no operation component.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/operationgrouping.gif" />
-                  <div>
-                      <h1>GROUP BRUSHES IN OPERATIONS</h1>
-                      <p>If you want to group multiple brushes in one single object you can put them under an operation and check "select on child" in it's options.</p>
-                      <p>Now every time you select one of it's brushes it'll select the whole group instead.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/deepclicking.gif" />
-                  <div>
-                      <h1>DEEP CLICKING</h1>
-                      <p>If you need to select a brush on a position where multiple brushes overlap you can simply click multiple times to get the brush you want.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/prefabdragging.gif" />
-                  <div>
-                      <h1>DRAG & DROP PREFABS INTO YOUR SCENE</h1>
-                      <p>With realtime-CSG you can easily make prefabs that automatically update the scene when modified.</p>
-                      <p>When you drag & drop a prefab and drag it into the scene the prefab will automatically be placed on and rotate with the underlying geometry.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/prefabcopy.gif" />
-                  <div>
-                      <h1>COPY OR REFERENCE PREFABS</h1>
-                      <p>If the top most GameObject in the prefab is a Brush, Operation or model then you can specify if the prefab will be <i>copied</i> or <i>referenced</i> into the scene.</p>
-                      <p>This allows you to have basic starter shapes that you can drag & drop into the scene without being a regular prefab.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/toolwindow.gif" />
-                  <div>
-                      <h1>TOOLWINDOW IN SCENE OR WINDOW</h1>
-                      <p>All the edit modes have a tool window. You can choose it to be in the sceneview or as a separate editor window (Cmd/Ctrl-F2).</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/freedraw.gif" />
-                  <div>
-                      <h1>DRAW YOUR BRUSHES</h1>
-                      <p>Simply hold V and create an outline by clicking in the scene. Release V and drag the center to extrude your 2D shape into a 3D brush.</p>
-                      <p>If you draw your outline on top of other brushes the newly generated shape will match the materials from that underlying brush.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/freedraw2.gif" />
-                  <div>
-                      <h1>NOT JUST ADDITIVE</h1>
-                      <p>If you drag your shape into an existing surface it will automatically turn it into a subtractive brush for you.</p>
-                      <p>Creating doors and windows has never been easier.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/circle.gif" />
-                  <div>
-                      <h1>EASY TO CREATE CYLINDERS TOO</h1>
-                      <p>If you hold C instead, you can easily create cylinders.</p>
-                      <p>You can adjust all kinds of parameters in the helper menu that shows up while creating the cylinder.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/move2.gif" />
-                  <div>
-                      <h1>MOVE A BRUSH BY DRAGGING IT OVER THE GRID</h1>
-                      <p>When you left hold your mouse button while hover over your brush you can move around on the grid.</p>
-                      <p>If you hold Z, you can move it into the up direction instead.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/dragcopy.gif" />
-                  <div>
-                      <h1>MAKING COPIES IS EASY</h1>
-                      <p>If you hold D and then drag your brush, you will drag a copy of your brush instead.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/gridsnapping.gif" />
-                  <div>
-                      <h1>SNAP TO THE GRID</h1>
-                      <p>The grid visually shows you where your brushes will snap when you move them.</p>
-                   </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/grid_scaling.gif" />
-                  <div>
-                      <h1>CHANGE THE GRID TO CHANGE SNAPPING</h1>
-                      <p>If you change the grid size (hotkeys [ and ]),<br />you will change where your brushes will snap.<br />You can also turn off snapping altogether or change your units by clicking on the unit symbol (m/cm/mm).</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/axisgridsizes.gif" />
-                  <div>
-                      <h1>GRID SIZE PER AXIS</h1>
-                      <p>The grid can have a different size in different directions.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/localglobal.gif" />
-                  <div>
-                      <h1>IN LOCAL MODE GRID IS RELATIVE TO PARENT</h1>
-                      <p>If the parent of the brush you're moving is rotated, the grid will also be rotated when Unity is in local mode.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/rebuild.gif" />
-                  <div>
-                      <h1>REBUILD YOUR MESH</h1>
-                      <p>If for whatever reason something goes wrong, you can press this button to rebuild the scene.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/wireframe.gif" />
-                  <div>
-                      <h1>SET UP YOUR SCENEVIEWS</h1>
-                      <p>Here you can see how to easily set up 2D views with the wireframe button.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-
-              <div class="group">
-                  <img class="example" src="assets/vertexdragging.gif" />
-                  <div>
-                      <h1>EDIT YOUR BRUSHES</h1>
-                      <p>When in Edit-Mode you can easily move the vertices of your brush in any position you want them to be.</p>
-                      <p>You can delete selected vertices by pressing the Delete key on your keyboard.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/multiedgedragging.gif" />
-                  <div>
-                      <h1>EDITING IS EASY</h1>
-                      <p>You can also select multiple vertices or edges on multiple brushes and drag them together.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/surfacedragging.gif" />
-                  <div>
-                      <h1>MOVE ANY SURFACE</h1>
-                      <p>By dragging the green points you can move any surface where you want them to be.</p>
-                      <p>If you ALT-click on a surface dot instead you can extrude the polygon.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/surfacenormaldragging.gif" />
-                  <div>
-                      <h1>MOVE ANY SURFACE ALONG IT'S DIRECTION</h1>
-                      <p>If you drag your surfaces while pressing shift it'll move into the direction it's facing.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/clipping.gif" />
-                  <div>
-                      <h1>CLIP YOUR BRUSH</h1>
-                      <p>In clip-mode you can simply drag along a surface of a brush and all the selected brushes will be cut along the plane that is formed there.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/clipping2.gif" />
-                  <div>
-                      <h1>CLIP YOUR BRUSHES</h1>
-                      <p>If you select multiple brushes, all of these brushes will be clipped by the same plane.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/clipping_options.gif" />
-                  <div>
-                      <h1>TWEAK YOUR CLIPPING</h1>
-                      <p>In the little helper menu in the bottom right corner of your view you can decide which side(s) of the plane needs to stick around and which side needs to be removed.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/bounds.gif" />
-                  <div>
-                      <h1>WORK ON MULTIPLE BRUSHES AT THE SAME TIME</h1>
-                      <p>Just select the brushes you want to work with, and you can scale/rotate/move etc. them together.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/rotate.gif" />
-                  <div>
-                      <h1>ROTATING IS EASY</h1>
-                      <p>In both object-mode and mesh-mode, when you use select the unity rotate tool <img src="assets/unitytools.png" style="vertical-align:middle" />, you can rotate your brush by dragging the edge of the brush into a circle.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/scale.gif" />
-                  <div>
-                      <h1>SCALING IS EASY</h1>
-                      <p>In object-mode you can also scale your brushes by moving the sides of the bounding box around your brushes.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/localglobal.gif" />
-                  <div>
-                      <h1>LOCAL/GLOBAL MODE</h1>
-                      <p>If Unity is in local mode <img src="assets/rotation_modes.gif" style="vertical-align:middle" /></p><p>All movement, rotations and scaling will be done in the direction the brush is rotated.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/dragndropmaterials.gif" />
-                  <div>
-                      <h1>ASSIGNING MATERIALS IS EASY</h1>
-                      <p>Just drag and drop the materials on the brush sides you want them to be on.</p>
-                      <p>If you selected multiple surfaces the material will be applied to all of them.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/dragtexgencopy.gif" />
-                  <div>
-                      <h1>COPYING MATERIALS IS EASY</h1>
-                      <p>In surface-mode, after you select a surface, you can press G onto another surface to copy your material to another surface.</p>
-                      <p>If you hold G and drag over multiple surfaces it'll make the texture coordinates flow over those surfaces. This even works when surfaces are not connected!</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/paintselect.gif" />
-                  <div>
-                      <h1>SELECTING MATERIALS IS EASY</h1>
-                      <p>In surface-mode you can select your surfaces by just dragging over them while holding control, shift or alt to remove/add surfaces from/to the selection.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-
-              <div class="group">
-                  <img class="example" src="assets/texture_rotate.gif" />
-                  <div>
-                      <h1>ROTATE YOUR TEXTURE</h1>
-                      <p>If Unity is in rotate mode <img src="assets/tools.gif" style="vertical-align:middle" /></p><p>You can press your mouse where you want to rotate your texture coordinates around, pull and just rotate around it.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-
-              <div class="group">
-                  <img class="example" src="assets/texture_translate.gif" />
-                  <div>
-                      <h1>DRAG YOUR TEXTURE</h1>
-                      <p>If Unity is in move mode <img src="assets/tools.gif" style="vertical-align:middle" /></p><p>You can press your mouse and just drag your texture over the surface of your brush</p>
-                      <p>Note that the texture is also snapped to the grid if snapping is on and this may make it look like it's moving in a different direction, even though it's not.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/smoothing.gif" />
-                  <div>
-                      <h1>SMOOTH BETWEEN SURFACES</h1>
-                      <p>If you want to smooth between multiple surfaces, just select them and press smooth in the surface-mode helper menu.</p>
-                      <p>Do you want them to be facetted instead? No problem, just press the un-smooth button.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/discarded.gif" />
-                  <div>
-                      <h1>DISCARD UNNECESSARY SURFACES</h1>
-                      <p>Sometimes you do not want certain surfaces to end up in your runtime, fortunately you can simply select and discard them.</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-
-              <div class="group">
-                  <img class="example" src="assets/invisible.gif" />
-                  <div>
-                      <h1>REMOVE YOUR CLUTTER</h1>
-                      <p>Sometimes you want to be able to see all kinds of invisible surfaces, but other times you do not.</p>
-                      <p>By using the dropdown in the bottom right corner you can turn all kinds of helper surfaces on / off (image is outdated).</p>
-                  </div>
-                  <div class="clear"></div>
-              </div>
-          </div>
+    </div>
 </body>
-
 </html>

@@ -42,97 +42,180 @@
     
   <br />
 
-  <center id="content2">
-    <div>
-        <h1>Your scene view</h1>
-        <p>When you first install realtime-CSG you will see these things in your sceneview:</p>
-        <p><img src="assets/tutorial_sceneview.png" width="658" height="660" /></p>
-        <br />
-        <br />
-        <p>Realtime-CSG has a custom grid. It has a couple of options that the<br /> default Unity grid does not provide, snapping against the grid is one of them:</p>
-        <br />
-        <p><img id="tutorial_snapping" src="assets/tutorial_snapping.png" width="520" height="300"/></p>
-        <br />
-        <p>When snapping is enabled you can snap in different directions with a different step size.<br/>
-            At the top of editor <img id="tutorial_grid_local" src="assets/tutorial_global_local.png" width="128" height="18" /> you can switch between local and global mode.<br />
-            When in local mode the grid will be rotated to the rotation of the parent object of thing you've selected.<br />
-            This allows you to work on a rotated grid. Another useful feature is that when you move things on the<br />
-             grid it will always show everything in the unit you selected, such as meter or centimeter.</p>
-        <p>The rebuild button is there for the rare case something goes wrong, then you can rebuild<br />
-            your scene to fix things. Under normal circumstances you won't need to use it.<br />
-            In a future version this button will probably be moved somewhere else.
-        </p>
-    </div>
-    <div>
-        <h1>Multiple views</h1>
-        <p>Realtime CSG can be used with one view, but when designing levels it's better to see your level from<br />
-           multiple sides at once. To make this easier Realtime CSG has some enhancements to Unity to better<br />
-             visualize your level. If you're not interested in setting up a 4 view layout, you can skip this section.</p>
-        <p>First you change your layout in the top right section, and select the 4 split:</p>
-        <p><img src="assets/tutorial_layout.png" width="334" height="241" /></p>
-        <p>And then set up your views one by one to have 3 orthographic views, and one perspective view.<br />
-            The orthographic views should each look at the scene in top/bottom, front/back and right/left.<br />
-            That way you can see everything from each side. You can set the view in the top right corner of<br />
-            each sceneview. You can right click on the bottom to select the direction or use the gizmo directly.<br />
-        </p>
-        <p>Once you've done that, for all the ortho (2D) views you want to turn off the skybox and other effects.<br />
-            You can do that by clicking here:</p>
-        <p><img src="assets/tutorial_skybox.png" width="398" height="119" /></p>
-        <p>You probably want to turn off the lighting too (the sun icon).<br />
-            Finally, you'll want to turn on the special wireframe mode of realtime-CSG that will allow you<br />
-            to see all the brushes in the scene without all the objects blocking each other and only<br />
-            rendering the outlines that are helpfull.
-        </p>
-        <p><img src="assets/tutorial_wireframe.png" width="269" height="120" /></p>
-        <p>That will turn your view from this:</p>
-        <p><img src="assets/tutorial_tower_no_wireframe.png" width="400" height="430" /></p>
-        <p>Into this:</p>
-        <p><img src="assets/tutorial_tower_wireframe.png" width="400" height="430" /></p>
-        <p>This way you can more easily see all the things that make up your level.</p>
-        <p>One last thing you might want to do is to turn your tool window into an<br />
-            editor window here:</p>
-        <p><img src="assets/tutorial_dock_tool_window.png" width="558" height="178" /></p>
-        <p>The tool window is useful to have in your scene view when it's the only view you're using, <br />
-            or when you're maximizing your view and all your editor windows are hidden. But when you're<br />
-            switching between multiple views it can get in the way and then it's better to dock it.</p>
-        <p>Finally, you might want to know that when you click to select a brush, and multiple brushes<br />
-            are underneath your mouse cursor, you can then cycle between them by clicking multiple times</p>
-    </div>
-    <div>
-        <h1>Edit modes</h1>
-        <p>These are the edit modes that realtime-CSG has:</p>
-        <p><img src="assets/tutorial_editmodes.png" width="353" height="48" /></p>
-        <p>
-        <span style="text-align:left; display: inline-block;">
-            <span class="option">Object</span> - move, rotate and scale multiple brushes.<br />
-            <span class="option">Generate</span> - create your brushes.<br />
-            <span class="option">Mesh</span> - edit the shapes of multiple brushes<br />
-            <span class="option">Clip</span> - clip away pieces from, or split, multiple brushes.<br />
-            <span class="option">Surfaces</span> - edit the texturing and smoothing of the sides of the brushes.<br />
-        </span>
-        </p>
-        <p>Note that you can generate brushes in any edit mode using the hotkeys that are available <br />
-            for that purpose. You can read about that in the "creating your first brushes" section.</p>
-    </div>
-    <div>
-        <h1>Creating your first brushes</h1>
-        <p>There are a couple of ways to create your brushes in the scene.</p>
-        <p>If you go to the "generate" edit mode you can switch between two different sub-tools to<br />
-             create brushes with (you can see the sub-tools at the bottom of the tool window):</p>
-        
-        <p><img src="assets/tutorial_generate_generic_shape_tool_window.png" width="286" height="162" /></p>
-        <p>This is the generic shape tool with which you can draw a 2D shape and extrude it.<br />
-            You can draw your 2D shape by creating a point everywhere you click. You can do this<br />
-            on any surface in the scene, or just on the grid. Note that you can use this tool in any <br />
-            edit mode by holding V while creating the points and then releasing V.</p>
-        <p><img src="assets/tutorial_generic_shape.png" width="360" height="332" /></p>
+    <center id="content2">
+        <div>
+            <h1>Your scene view</h1>
+            <p>When you first install realtime-CSG you will see these things in your sceneview:</p>
+            <p><img src="assets/tutorial_sceneview.png" width="658" height="660" /></p>
+            <div class="leftalign">
+                <p>
+                    The rebuild button is there for the rare case something goes wrong, in which case you can rebuild <br />
+                    your scene to fix things. Under normal circumstances you won't need it.
+                    In a future version this <br />button will probably be moved somewhere else.
+                </p>
+                <p>
+                    All other parts are described below.
+                </p>
+            </div>
+        </div>
+        <div class="pagebreak"></div>
+        <div>
+            <h1>Multiple views</h1>
+            <div class="leftalign">
+                <p>
+                    Realtime CSG can be used with one view, but when designing levels it's better to see your level from<br />
+                    multiple sides at once. To make this easier Realtime CSG has some enhancements to Unity to better<br />
+                    visualize your level. If you're not interested in setting up a 4 view layout, you can skip this section.
+                </p>
+                <p>First you change your layout in the top right section, and select the 4 split:</p>
+                <p class="center"><img src="assets/tutorial_layout.png" width="334" height="241" /></p>
+                <p>
+                    And then set up your views one by one to have 3 orthographic views, and one perspective view.<br />
+                    The orthographic views should each look at the scene in top/bottom, front/back and right/left.<br />
+                    That way you can see everything from each side. You can set the view in the top right corner of<br />
+                    each sceneview. You can right click on the bottom to select the direction or use the gizmo directly.<br />
+                </p>
+                <p>
+                    Once you've done that, for all the ortho (2D) views you want to turn off the skybox and other effects.<br />
+                    You can do that by clicking here:
+                </p>
+                <p class="center"><img src="assets/tutorial_skybox.png" width="398" height="119" /></p>
+                <p>
+                    You probably want to turn off the lighting too (the sun icon).
+                </p>
+            </div>
+        </div>
+        <div style="page-break-before:always">
+            <div class="leftalign">
+                <p>
+                    Finally, you'll want to turn on the special wireframe mode of realtime-CSG that will allow you<br />
+                    to see all the brushes in the scene without all the objects blocking each other and only<br />
+                    rendering the outlines that are helpfull.
+                </p>
+                <p class="center"><img src="assets/tutorial_wireframe.png" width="269" height="120" /></p>
+                <p class="center">That will turn your view from this:</p>
+                <p class="center"><img src="assets/tutorial_tower_no_wireframe.png" width="400" height="430" /></p>
+                <p class="center">Into this:</p>
+                <p class="center"><img src="assets/tutorial_tower_wireframe.png" width="400" height="430" /></p>
+                <p>This way you can more easily see all the things that make up your level.</p>
+            </div>
+        </div>
+        <div style="page-break-before:always">
+            <div class="leftalign">
+                <p>
+                    One last thing you might want to do is to turn your tool window into an<br />
+                    editor window here:
+                </p>
+                <p class="center"><img src="assets/tutorial_dock_tool_window.png" width="558" height="178" /></p>
+                <p>
+                    The tool window is useful to have in your scene view when it's the only view you're using, <br />
+                    or when you're maximizing your view and all your editor windows are hidden. But when you're<br />
+                    switching between multiple views it can get in the way and then it's better to dock it.
+                </p>
+                <br />
+                <p>
+                    Finally, you might want to know that when multiple brushes are underneath your mouse cursor, <br />
+                    you can then cycle between them by clicking multiple times on the same spot.
+                </p>
+            </div>
+        </div>
+        <div>
+            <h1>Snapping</h1>
+            <div class="leftalign">
+                <p>
+                    Realtime-CSG has a custom grid. It has a couple of options that the default Unity grid does<br />
+                    not provide, snapping against the grid is one of them. When snapping is enabled you can snap<br />
+                    in different directions with a different step size.
+                </p>
+                <p class="center"><img id="tutorial_snapping" src="assets/tutorial_snapping.png" width="520" height="300" /></p>
+                <p>
+                    At the top of editor <img id="tutorial_grid_local" src="assets/tutorial_global_local.png" width="128" height="18" /> you can switch between <span class="emphasis">local</span> and <span class="emphasis">global</span> mode.
+                </p>
+                <p>
+                    When Unity is in <span class="emphasis">local</span> mode the grid will be rotated to parent of the currently selected object. <br />
+                    This allows you to work on a rotated grid.
+                </p>
+                <p>
+                    Another useful feature is that you can choose in what
+                    unit the grid and measurements will <br />be displayed, such as meter or centimeter.
+                </p>
+            </div>
+        </div>
+        <div style="page-break-before:always">
+            <h1>Movement</h1>
+            <div class="leftalign">
+                <p>
+                    When your view is in 2D and you, for instance, move a brush or an edge your movements<br />
+                    will automatically be aligned with the view.
+                </p>
+                <p>
+                    In perspective mode, however, your movements will be aligned with the grid in the scene. <br/>
+                    If you want to move upwards relative to the grid you can do that by holding <span class="emphasis">Z</span> while dragging. 
+                </p>
+            </div>
+        </div>
+        <div>
+            <h1>Edit modes</h1>
+            <div class="leftalign">
+                <p class="center">These are the edit modes that realtime-CSG has:</p>
+                <p class="center"><img src="assets/tutorial_editmodes.png" width="353" height="48" /></p>
+                <p class="center">
+                    <span style="text-align:left; display: inline-block;">
+                        <span class="option">Object</span> - move, rotate and scale multiple brushes.<br />
+                        <span class="option">Generate</span> - create your brushes.<br />
+                        <span class="option">Mesh</span> - edit the shapes of multiple brushes<br />
+                        <span class="option">Clip</span> - clip away pieces from, or split, multiple brushes.<br />
+                        <span class="option">Surfaces</span> - edit the texturing and smoothing of the sides of the brushes.<br />
+                    </span>
+                </p>
+                <p class="leftalign">
+                    Note that you can generate brushes in any edit mode using the hotkeys that are available <br />
+                    for that purpose. You can read about that in the "creating your first brushes" section.
+                </p>
+            </div>
+        </div>
 
-        <p><img src="assets/tutorial_generate_cylinder_tool_window.png" width="282" height="202" /></p>
-        <p>This is the cylinder shape tool with which you can create a 2D circle and extrude it.<br />
-            Same as above, you can create this 2D circle on any surface, or on the grid.<br />
-            For Cylinders the hotkey is C.</p>
-        <p><img src="assets/tutorial_cylinder.png" width="276" height="308" /></p>
+        <div style="page-break-before:always">
+            <h1>Creating your first brushes</h1>
+            <div class="leftalign">
+                <p>There are a couple of ways to create your brushes in the scene.</p>
+                <p>
+                    If you go to the "generate" edit mode you can switch between two different sub-tools to<br />
+                    create brushes with (you can see the sub-tools at the bottom of the tool window):
+                </p>
 
-    </div>
+                <p class="center"><img src="assets/tutorial_generate_generic_shape_tool_window.png" width="286" height="162" /></p>
+                <p>
+                    "Free-draw" is the generic shape tool with which you can draw a 2D shape, <br />
+                    optionally edit that 2D shape, and extrude it.<br /><br />
+                    You can draw your 2D shape by creating a point everywhere you click. You can do this<br />
+                    on any surface in the scene, or just on the grid. Note that you can use this tool in any <br />
+                    edit mode by holding V while creating the points and then releasing V.
+                </p>
+                <p class="center"><img src="assets/tutorial_generic_shape.png" width="360" height="332" /></p>
+
+            </div>
+        </div>
+
+        <div style="page-break-before:always">
+            <div class="leftalign">
+                <p class="center"><img src="assets/tutorial_generate_cylinder_tool_window.png" width="282" height="202" /></p>
+                <p>
+                    This is the cylinder shape tool with which you can create a 2D circle and extrude it.<br />
+                    Same as above, you can create this 2D circle on any surface, or on the grid.<br />
+                    For Cylinders the hotkey is C.
+                </p>
+                <p class="center"><img src="assets/tutorial_cylinder.png" width="276" height="308" /></p>
+                <br />
+                <br />
+                <p>
+                    If you've already created some prefabs, another way to create your brushes is to drag<br />
+                    a prefab into your scene that contains your premade brushes. If you only want to copy<br />
+                    these brushes and not have them actually be prefabs you can set the Prefab drag & drop<br />
+                    to "Copy" and the brush will be copied instead of become a prefab in your scene.
+                </p>
+                <p class="center"><img src="assets/tutorial_prefabdragndrop.png" width="313" height="59" /></p>
+            </div>
+        </div>
 </body>
 </html>

@@ -499,6 +499,8 @@ div .leftalign,
 	text-align:left;
 	display:inline-block;
 	padding: 10px;
+	padding-left: 40px;
+	padding-right: 40px;
     border-style: solid;
     border-width: 1px;
     border-radius: 10px;

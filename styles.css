@@ -507,6 +507,15 @@ div .leftalign,
 	color:black;
 }
 
+.login form
+{
+	text-align:center;
+}
+.captcha 
+{
+	text-align:center;
+	display:inline-block;	
+}
 .clear { clear:both; }
 
   @media all {

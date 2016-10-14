@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <title>RealtimeCSG</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Oswald|Roboto+Condensed" rel="stylesheet" type="text/css">
+  <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  <meta charset="utf-8">
+</head>
+
+<body>
+  <div class="bar">
+    <div class="title">
+      &nbsp;&nbsp;<img src="assets/logo3_24.png" class="csg-logo-tiny" />
+      <span class="real-time">realtime</span>&nbsp;<span class="CSG-small">CSG </span>&nbsp;
+    </div>
+    <div class="barLinks">
+        <a href="index.html" target="_self">FEATURES</a>
+        <span>DOCUMENTATION</span>
+        <a href="https://www.youtube.com/playlist?list=PL7mogqtGTzCosI7UYj5p0jNBzbYWEazi6" target="_blank">VIDEOS</a>
+        <a href="http://prenominal.nl/updates/index.php" target="_self">UPDATES</a>
+        <a href="https://github.com/LogicalError/realtime-CSG-for-unity/issues" target="_blank">FEEDBACK</a>
+    </div>
+    <div class="contacts">
+	<span class="email"><a href="mailto:sander.vanrossen@gmail.com" target="_self"><img src="assets/ic_email_white_24dp_1x.png" /></a></span>
+	<span class="twitter"><a href="https://twitter.com/logicalerror" target="_blank"><img src="assets/twitter.png" /></a></span>
+    </div>
+  </div>
+    
+  <br />
+    <center id="content2">
+        <div id="documentationtab">
+            <a href="getstarted.html" target="_self">GET STARTED</a><br />
+            <a href="keyboardlayout.html" target="_self">KEYBOARD LAYOUT</a><br />
+            <span>TIPS & BEST PRACTICES</span>
+        </div>
+
+        <div id="documentation">
+            <div>
+                <h1>TIPS & BEST PRACTICES</h1>
+                <p><span class="emphasis">Tip:</span> If you have any issues or feature requests, no matter how small, <a href="https://github.com/LogicalError/realtime-CSG-for-unity/issues" target="_blank">please share them here</a>!</p>
+                <p><span class="emphasis">Tip:</span> Don't put your entire level into a single model. Each model will generate a single mesh for all the surfaces that share the same material in that model. If a mesh becomes too large then Unity's occlusion culling will always draw the entire mesh even if only a tiny part is visible.</p>
+                <p><span class="emphasis">Tip:</span> If you have one scene view window then the tool window might not be in the way, but if you have multiple scene views you probably want to dock it to the side. You can do this by pressing <span class="emphasis">control-F2</span> or on the x in the side of the tool window.</p>
+                <p><span class="emphasis">Tip:</span> Experiment with different CSG operation types (additive, subtractive and intersecting) and how they interact. Also try putting them into operations. You'll be surprised how easy it can be to make complicated shapes when you get the hang of it.</p>
+                <p><span class="emphasis">Tip:</span> If you select the model, at the bottom you can find statistics about your mesh</p>
+                <p><span class="emphasis">Tip:</span> You can create prefabs of your brushes/operations and drag them into the scene which is a very easy way to reuse pieces of geometry.</p>
+                <p><span class="emphasis">Tip:</span> If you set the "prefab drag & drop" parameter to "Copy", then every time you drag that shape into your scene it'll be copied into your scene instead of it being a regular prefab. 
+                    That way you can keep create simple default shapes around that you can drop into the scene without them becoming a full fledged prefab.</p>
+                <p><span class="emphasis">Tip:</span> You can set the grid size manually by clicking on the number at the bottom of your scene view and just typing whatever number you need</p>
+
+            </div>
+        </div>
+        <div style="page-break-before:always">
+     </div>
+ </body>
+</html>

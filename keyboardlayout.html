@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <title>RealtimeCSG</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Oswald|Roboto+Condensed" rel="stylesheet" type="text/css">
+  <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  <meta charset="utf-8">
+</head>
+
+<body>
+  <div class="bar">
+    <div class="title">
+      &nbsp;&nbsp;<img src="assets/logo3_24.png" class="csg-logo-tiny" />
+      <span class="real-time">realtime</span>&nbsp;<span class="CSG-small">CSG </span>&nbsp;
+    </div>
+    <div class="barLinks">
+        <a href="index.html" target="_self">FEATURES</a>
+        <span>DOCUMENTATION</span>
+        <a href="https://www.youtube.com/playlist?list=PL7mogqtGTzCosI7UYj5p0jNBzbYWEazi6" target="_blank">VIDEOS</a>
+        <a href="http://prenominal.nl/updates/index.php" target="_self">UPDATES</a>
+        <a href="https://github.com/LogicalError/realtime-CSG-for-unity/issues" target="_blank">FEEDBACK</a>
+    </div>
+    <div class="contacts">
+	<span class="email"><a href="mailto:sander.vanrossen@gmail.com" target="_self"><img src="assets/ic_email_white_24dp_1x.png" /></a></span>
+	<span class="twitter"><a href="https://twitter.com/logicalerror" target="_blank"><img src="assets/twitter.png" /></a></span>
+    </div>
+  </div>
+    
+  <br />
+    <center id="content2">
+        <div id="documentationtab">
+            <a href="getstarted.html" target="_self">GET STARTED</a><br />
+            <span>KEYBOARD LAYOUT</span><br />
+            <a href="tips.html" target="_self">TIPS & BEST PRACTICES</a>
+        </div>
+
+        <div id="documentation">
+            <div>
+                <h1>KEYBOARD LAYOUT</h1>
+
+                <p><b>ALL EDIT MODES</b></p>
+                <p><span class="key">Control-F2  </span> Undock tool window</p>
+
+                <p><span class="key">H           </span> Hide all selected objects<br />
+                   <span class="key">Control-H   </span> Hide all unselected objects<br />
+                   <span class="key">U           </span> Unhide all selected objects</p>
+
+                <p><span class="key">Escape      </span> Cancel / Deselect<br />
+                   <span class="key">Enter/Return</span> Commit</p>
+
+                <p><span class="key">Page-Down   </span> Cycle edit mode forward<br />
+                   <span class="key">Page-Up     </span> Cycle edit mode backward</p>
+                    
+                <p><span class="key">?           </span> Make selected operation <span class="emphasis">pass-through</span><br />
+                   <span class="key">= or +      </span> Make selected brush/operation <span class="emphasis">additive</span><br />
+                   <span class="key">-           </span> Make selected brush/operation <span class="emphasis">subtractive</span><br />
+                   <span class="key">/           </span> Make selected brush/operation <span class="emphasis">intersecting</span></p>
+
+                <p><span class="key">V           </span> Toggle <span class="emphasis">Free-draw</span> generation edit mode<br />
+                   <span class="key">C           </span> Toggle <span class="emphasis">Cylinder-draw</span> generation edit mode<br />
+                   <span class="key">B           </span> Toggle <span class="emphasis">Box-draw</span> generation edit mode</p>
+
+                <p><span class="key">[           </span> Half grid side<br />
+                   <span class="key">]           </span> Double grid size<br />
+                   <span class="key">G           </span> Toggle grid shift<br />
+                   <span class="key">Shift-T     </span> Toggle snapping</p>
+                <br />
+                
+                <p><b>GENERATOR EDIT MODE</b></p>
+                <p>
+                    <span class="key">Delete      </span> Delete selected free-draw shape points</p>
+                <br />
+                
+                <p><b>MESH EDIT MODE</b></p>
+                <p><span class="key">M           </span> Merge selected edge<br />
+                   <span class="key">Control-End </span> Snap selection to grid<br />
+                   <span class="key">hold D      </span> Drag a clone of your selection<br />
+                   <span class="key">hold Z      </span> Move selection up<br />
+                   <span class="key">hold Shift  </span> Move surface in it's facing direction<br />
+                   <span class="key">ALT + click </span> Create free-draw shape from surface so you can extrude it<br />
+                   <span class="key">Delete      </span> Delete selected vertices</p>
+                <br />
+
+                <p><b>OBJECT EDIT MODE</b></p>
+                <p><span class="key">hold D      </span> Drag a clone of your selection<br />
+                   <span class="key">hold Z      </span> Move selection up</p>
+                <br />
+
+                <p><b>SURFACE EDIT MODE</b></p>
+                <p><span class="key">G           </span> Copy Last Material<br />
+                   <span class="key">Hold G      </span> Smear Material over surfaces</p>
+                <br />
+            </div>
+        </div>
+        <div style="page-break-before:always">
+     </div>
+ </body>
+</html>

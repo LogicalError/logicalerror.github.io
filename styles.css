@@ -2,12 +2,7 @@ html, body {
     width: 100%;
     height: 100%;
     margin: 0px;
-}
-
-body
-{
-    overflow: -moz-scrollbars-vertical; 
-    overflow-y: scroll;
+	padding: 0px;
 }
 
 body {
@@ -19,6 +14,7 @@ body {
 	background-image: radial-gradient(50% 50%, circle, rgb(255, 255, 255) 0%, rgb(199, 197, 197) 100%);
     background-repeat: no-repeat;
 	background-attachment: fixed;
+	display: table;
 }
 #header {
     display: block;
@@ -55,26 +51,27 @@ body {
 }
 
 .bar {
-    display: block;
-    position: fixed;
+	display: table-row;
+	position: fixed;
     left: 0px;
+    height: auto;
     top: 0px;
     width: 100%;
-    height: 30px;
+	padding: 0px;
     margin: 0px;
     z-index: 100;
     background-image: none;
     background-color: rgb(42, 42, 42);
 }
+
 .barLinks
 {
 	color: white;
-    position: absolute;
+	display: block;
 	text-align:center;
+	margin: auto;
     margin-top: 4px;
-    margin-bottom: auto;
-	width: 100%;
-	height: 20px;
+	height: auto;
     font-family: 'Roboto Condensed';
     font-weight: bold;
     font-size: 19px;
@@ -98,6 +95,8 @@ body {
 	margin-left: 15px;
 	margin-right: 15px;
 }
+.barLinks:first-child { margin-left: 0px; }
+.barLinks:last-child { margin-right: 0px; }
     
 .barLinks a:hover,
 .barLinks a:active
@@ -105,25 +104,22 @@ body {
     text-decoration: none;
 }
     
-
-
-.title {
-    position: absolute;
-    width: 200px;
+.title 
+{
+	float:left;
+	white-space:nowrap;
     font-family: 'Roboto Condensed';
     font-weight: bold;
     font-size: 24px;
     height: 30px;
     margin-top: auto;
     margin-bottom: auto;
-    display: inline-block;
-    border-color: rgb(0, 0, 0);
     opacity: 1;
-    border-image-source: none;
-    color: rgb(255, 255, 255);
-    top: 0px;
-    left: 0px;
     text-align: left;
+	padding-left: 6px;
+    color: rgb(255, 255, 255);
+	margin-right: 10px;
+	overflow: hidden;
 }
 
 #content {
@@ -468,36 +464,46 @@ body {
 	height: 72px;
 }
 
-.real-time {
+.real-time,
+.real-time-large {
+	display:none;
     position: relative;
-    display: inline;
     color: rgb(255, 102, 0);
     text-transform: lowercase;
 }
+
+.real-time-large {
+	display: inline;
+}
+
 .CSG-small {
+	display: none;
     position: relative;
     top: 1px;
 }
+
 .CSG {
     position: relative;
     top: 4px;
 }
 
-
-.contacts {
-    position: absolute;
-    width: 100px;
+.contacts 
+{
+	float:right;
+ 	white-space:nowrap;
+    font-family: 'Roboto Condensed';
+    font-weight: bold;
+    font-size: 24px;
     height: 30px;
     margin-top: auto;
     margin-bottom: auto;
-    display: inline-block;
     opacity: 1;
+    text-align: right;
     top: 1px;
     right: 5px;
-
-    text-align: right;
-    vertical-align:middle;
-    padding-bottom: 3px;
+	margin-left: auto;
+	margin-right: 0px;
+	overflow: hidden;
 }
 
 .twitter {
@@ -609,6 +615,19 @@ div .leftalign,
   @media all {
     .pagebreak { display: none; }
   }
+  
+	@media (min-width: 900px) 
+	{
+		.real-time
+		{
+			display: inline;
+		}
+		.CSG-small {
+			display: inline;
+		}
+	}
+
+
   @media print {
 	.files,
 	.files a { color:black; }

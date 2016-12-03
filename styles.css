@@ -65,6 +65,7 @@ body {
 }
 
 .bar { position: fixed; }
+.bar-notfixed { height: 20px; }
 
 .barLinks
 {

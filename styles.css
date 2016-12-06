@@ -390,7 +390,6 @@ body {
 
 #video {
 	width: 100%;
-    z-index: -1;
     height: 600px;
     overflow: hidden;
 }

@@ -58,13 +58,19 @@
             <div>
                 <h1>Your scene view</h1>
                 <p>When you first install realtime-CSG you will see these things in your sceneview:</p>
-                <p><img src="assets/tutorial_sceneview.png" width="658" height="660" /></p>
+                <p class="center"><img src="assets/tutorial_sceneview.png" width="658" height="660" /></p>
                 <div>
                     <p>
                         The rebuild button is there for the rare case something goes wrong, in which case you can rebuild
                         your scene to fix things. Under normal circumstances you won't need it.
                         In a future version this button will probably be moved somewhere else.
                     </p>
+                    <p class="center noprint"><img class="example" src="assets/rebuild.gif" /></p>
+                    <p>
+                        The dropdown to the right of it allows you to show or hide surfaces that aren't visible in
+                        your game.
+                    </p>
+                    <p class="center"><img src="assets/invisible.gif" /></p>
                     <p>
                         All other parts are described below.
                     </p>
@@ -80,6 +86,8 @@
                         to better visualize your level. If you're not interested in setting up a 4 view layout, you can
                         skip this section.
                     </p>
+                </div>
+                <div>
                     <p>First you change your layout in the top right section, and select the 4 split:</p>
                     <p class="center"><img src="assets/tutorial_layout.png" width="334" height="241" /></p>
                     <p>
@@ -87,7 +95,7 @@
                         The orthographic views should each look at the scene in top/bottom, front/back and right/left.
                         That way you can see everything from each side.
                     </p>
-                    <p> 
+                    <p>
                         You can set the view in the top right corner of
                         each sceneview. You can right click on the bottom to select the direction or use the gizmo directly.
                     </p>
@@ -111,12 +119,14 @@
                     <p class="center"><img src="assets/tutorial_wireframe.png" width="269" height="120" /></p>
                     <p class="center">That will turn your view from this:</p>
                     <p class="center"><img src="assets/tutorial_tower_no_wireframe.png" width="400" height="430" /></p>
+                </div>
+            </div>
+            <div style="page-break-before:always">
+                <div>
                     <p class="center">Into this:</p>
                     <p class="center"><img src="assets/tutorial_tower_wireframe.png" width="400" height="430" /></p>
                     <p>This way you can more easily see all the things that make up your level.</p>
                 </div>
-            </div>
-            <div style="page-break-before:always">
                 <div>
                     <p>
                         One last thing you might want to do is to turn your tool window into an
@@ -124,16 +134,19 @@
                     </p>
                     <p class="center"><img src="assets/tutorial_dock_tool_window.png" width="558" height="178" /></p>
                     <p>
-                        The tool window is useful to have in your scene view when it's the only view you're using, 
+                        The tool window is useful to have in your scene view when it's the only view you're using,
                         or when you're maximizing your view and all your editor windows are hidden. But when you're
                         switching between multiple views it can get in the way and then it's better to dock it.
                     </p>
                     <p>
-                        You can also do this by either pressing the hotkey control-F2, or in version 1.300 and above by clicking in the close button on the edit modes window or the tool window,
+                        You can also do this by either pressing the hotkey control-F2, or by clicking in the close button on the edit modes window or the tool window.
+                    </p>
+                    <p class="center noprint">
+                        <img class="example" src="assets/toolwindow.gif" />
                     </p>
                     <br />
                     <p>
-                        Finally, you might want to know that when multiple brushes are underneath your mouse cursor, 
+                        Finally, you might want to know that when multiple brushes are underneath your mouse cursor,
                         you can then cycle between them by clicking multiple times on the same spot.
                     </p>
                 </div>
@@ -148,10 +161,15 @@
                     </p>
                     <p class="center"><img id="tutorial_snapping" src="assets/tutorial_snapping.png" width="520" height="300" /></p>
                     <p>
+                        You can type in snapping size manually by clicking on the text boxes.
+                        The hot-keys [ and ] allow you to half or double the grid size.
+                        If you click on the unit (m) you can toggle between m/cm/mm and the lengths in the scene-view will show everything in that unit as well.
+                    </p>
+                    <p>
                         At the top of editor <img id="tutorial_grid_local" src="assets/tutorial_global_local.png" width="128" height="18" /> you can switch between <span class="emphasis">local</span> and <span class="emphasis">global</span> mode.
                     </p>
                     <p>
-                        When Unity is in <span class="emphasis">local</span> mode the grid will be rotated to parent of the currently selected object. 
+                        When Unity is in <span class="emphasis">local</span> mode the grid will be rotated to parent of the currently selected object.
                         This allows you to work on a rotated grid.
                     </p>
                     <p>
@@ -168,8 +186,8 @@
                         will automatically be aligned with the view.
                     </p>
                     <p>
-                        In perspective mode, however, your movements will be aligned with the grid in the scene. <br/>
-                        If you want to move upwards relative to the grid you can do that by holding <span class="emphasis">Z</span> while dragging. 
+                        In perspective mode, however, your movements will be aligned with the grid in the scene. <br />
+                        If you want to move upwards relative to the grid you can do that by holding <span class="emphasis">Z</span> while dragging.
                     </p>
                 </div>
             </div>
@@ -188,7 +206,7 @@
                         </span>
                     </p>
                     <p>
-                        Note that you can generate brushes in any edit mode using the hotkeys that are available 
+                        Note that you can generate brushes in any edit mode using the hotkeys that are available
                         for that purpose. You can read about that in the "creating your first brushes" section.
                     </p>
                 </div>
@@ -205,20 +223,18 @@
 
                     <p class="center"><img src="assets/tutorial_generate_generic_shape_tool_window.png" width="313" height="166" /></p>
                     <p>
-                        "Free-draw" is the generic shape tool with which you can draw a 2D shape, 
-                        optionally edit that 2D shape, and extrude it.
+                        "Free-draw" is the generic shape tool with which you can draw a 2D shape,
+                        optionally edit that 2D shape, and extrude it. If you double click on
+                        the edges of the 2D shape you're extruding, you can turn those edges into curved surfaces.
                     </p>
                     <p class="center"><img src="assets/tutorial_generic_shape.png" width="360" height="332" /></p>
                     <p>
                         You can draw your 2D shape by creating a point everywhere you click. You can do this
-                        on any surface in the scene, or just on the grid. Note that you can use this tool in any 
+                        on any surface in the scene, or just on the grid. Note that you can use this tool in any
                         edit mode by holding V while creating the points and then releasing V.
                     </p>
 
                 </div>
-            </div>
-
-            <div style="page-break-before:always">
                 <div>
                     <p class="center"><img src="assets/tutorial_generate_cylinder_tool_window.png" width="316" height="231" /></p>
                     <p>
@@ -249,12 +265,22 @@
                 <h1>Prefabs</h1>
                 <div>
                     <p>
-                        If you've already created some prefabs, another way to create your brushes is to drag
-                        a prefab into your scene that contains your premade brushes. If you only want to copy
-                        these brushes and not have them actually be prefabs you can set the Prefab drag & drop
-                        to "Copy" and the brush will be copied instead of become a prefab in your scene.
+                        Another way to create your brushes is to drag a prefab into your scene that contains pre-made pieces that you can create yourself.
+                        This allows you to easily drag & drop level tile-sets into your scene or smaller pieces like windows, doors etc. while still having the ability to tweak and edit everything.
+                    </p>
+                    <p>
+                        Sometimes you want the parts that you drag into your scene to not retain a link to your original prefab.
+                        Realtime-CSG has the option to set a Prefab to "Copy". If you drag & drop a Prefab into the scene that is
+                        marked as a "Copy" prefab, it'll be copied into your scene as a new object instead.
                     </p>
                     <p class="center"><img src="assets/tutorial_prefabdragndrop.png" width="313" height="59" /></p>
+                    <p>
+                        This option will only show up if the top most GameObject has a Brush or an Operation.
+                    </p>
+                    <p>
+                        When you drag your prefab over the scene, it'll align with the underlying surface when dragged over other brushes.
+                        To ensure that your prefab is orientated correctly, make sure it's build at the origin and faces upwards.
+                    </p>
                 </div>
             </div>
             <br />

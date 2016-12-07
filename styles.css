@@ -638,6 +638,8 @@ div .leftalign,
 		}
 	}
 
+.noprint {
+}
 
   @media print {
 	.files,
@@ -647,11 +649,16 @@ div .leftalign,
     #video,
     #video iframe,
     .bar { display: none; height: 0px; visibility: hidden; }
+    #documentationtab { display: none; height: 0px; visibility: hidden; }  
     .overlay
     {
       background: none;
       filter: unset;
       overflow: visible;
+    }
+    .noprint
+    {
+        display: none; height: 0px; visibility: hidden;
     }
     .overlayText 
 	{ 
@@ -670,14 +677,20 @@ div .leftalign,
     }
     #header,
     #content,
+    #content2,
     #documentation
     {
-      padding-top:0px;
+	 float:none;
+     padding:0px;
+     margin:0px;
+     border:none;
       border-style: none;
       background: none;
+      width: auto;
     }
     #header div h1,
     #content div h1,
+    #content2 div h1,
     #documentation div h1
     {
        color: black;

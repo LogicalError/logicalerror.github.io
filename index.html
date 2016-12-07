@@ -125,7 +125,7 @@
             </p>
         </div>
         </center>
-<center id="content">
+        <center id="content">
             <div>
                 <div class="group">
                     <img class="example" src="assets/operations.gif" />
@@ -140,7 +140,8 @@
                     <img class="example" src="assets/hierarchy.gif" />
                     <div>
                         <h1>THE HIERARCHY DEFINES THE SHAPE</h1>
-                        <p>The final mesh is created by going through the hierarchy from top to bottom, adding, subtracting or intersecting brushes with each other.</p>
+                        <p>Conceptually, the final mesh is created by Realtime-CSG by going through the hierarchy from top to bottom, adding, subtracting or intersecting brushes with each other.</p>
+                        <p>All brushes are part of a model.</p>
                     </div>
                     <div class="clear"></div>
                 </div>
@@ -149,8 +150,9 @@
                     <img class="example" src="assets/donotrender.gif" />
                     <div>
                         <h1>THE MODEL IS YOUR MESH</h1>
-                        <p>The Model component holds the brushes with which you create the final mesh with.</p>
-                        <p>By selecting the model component you can make your brushes define a trigger, or make your final mesh static or dynamic.</p>
+                        <p>All the brushes belong to a model, which generates the final mesh that ends up in your game.</p>
+                        <p>All the brushes underneath it in the hierarchy will belong to this model, unless there's another model within the model.</p>
+                        <p>The settings on the model component allow you to define how this mesh will be behave in your game.</p>
                     </div>
                     <div class="clear"></div>
                 </div>
@@ -161,7 +163,7 @@
                         <h1>EXPORT TO FBX</h1>
                         <p>If you prefer to do your finishing touches in your favorite DCC package you can export your CSG model to an FBX file. Your in scene CSG model will automatically be swapped with your exported mesh so that when you change the FBX, it'll be reflected in the scene.</p>
                         <p>Don't worry, you will always have the option to revert back to the original CSG model.</p>
-                        <p><i>available since version 1.100</i></p>
+                        <p>It's also possible convert your model to an Unity mesh directly instead.</p>
                     </div>
                     <div class="clear"></div>
                 </div>
@@ -190,9 +192,9 @@
                 <div class="group">
                     <img class="example" src="assets/operationgrouping.gif" />
                     <div>
-                        <h1>GROUP BRUSHES IN OPERATIONS</h1>
+                        <h1>TREAT GROUPS OF BRUSHES AS A SINGLE OBJECT</h1>
                         <p>If you want to group multiple brushes in one single object you can put them under an operation and check "select on child" in it's options.</p>
-                        <p>Now every time you select one of it's brushes it'll select the whole group instead.</p>
+                        <p>Now every time you select one of it's brushes you'll select the whole operation.</p>
                     </div>
                     <div class="clear"></div>
                 </div>
@@ -217,25 +219,6 @@
                 </div>
 
                 <div class="group">
-                    <img class="example" src="assets/prefabcopy.gif" />
-                    <div>
-                        <h1>COPY OR REFERENCE PREFABS</h1>
-                        <p>If the top most GameObject in the prefab is a Brush, Operation or model then you can specify if the prefab will be <i>copied</i> or <i>referenced</i> into the scene.</p>
-                        <p>This allows you to have basic starter shapes that you can drag & drop into the scene without being a regular prefab.</p>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-
-                <div class="group">
-                    <img class="example" src="assets/toolwindow.gif" />
-                    <div>
-                        <h1>TOOLWINDOW IN SCENE OR WINDOW</h1>
-                        <p>All the edit modes have a tool window. You can choose it to be in the sceneview or as a separate editor window (Cmd/Ctrl-F2).</p>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-
-                <div class="group">
                     <img class="example" src="assets/freedraw.gif" />
                     <div>
                         <h1>DRAW YOUR BRUSHES</h1>
@@ -246,11 +229,11 @@
                 </div>
 
                 <div class="group">
-                    <img class="example" src="assets/freedraw2.gif" />
+                    <img class="example" src="assets/curves.gif" />
                     <div>
-                        <h1>NOT JUST ADDITIVE</h1>
-                        <p>If you drag your shape into an existing surface it will automatically turn it into a subtractive brush for you.</p>
-                        <p>Creating doors and windows has never been easier.</p>
+                        <h1>CURVED SHAPES</h1>
+                        <p>Double click on edges and vertices to toggle it between being a straight line and a curved line.</p>
+                        <p>Drag the handles around to control the shape of the curve</p>
                     </div>
                     <div class="clear"></div>
                 </div>
@@ -258,9 +241,30 @@
                 <div class="group">
                     <img class="example" src="assets/circle.gif" />
                     <div>
-                        <h1>EASY TO CREATE CYLINDERS TOO</h1>
+                        <h1>CREATE CYLINDERS</h1>
                         <p>If you hold C instead, you can easily create cylinders.</p>
-                        <p>You can adjust all kinds of parameters in the helper menu that shows up while creating the cylinder.</p>
+                        <p>You can adjust all kinds of parameters in the helper menu that shows up while creating the cylinder. This allows you to set the radius, height of the cylinder box manually</p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="group">
+                    <img class="example" src="assets/box.gif" />
+                    <div>
+                        <h1>CREATE BOXES</h1>
+                        <p>If you hold B, you can draw boxes.</p>
+                        <p>You can adjust all kinds of parameters in the helper menu that shows up while creating the box. This allows you to set the width,height and depth of the box manually.</p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="group">
+                    <img class="example" src="assets/freedraw2.gif" />
+                    <div>
+                        <h1>CREATE ON ANY SURFACE</h1>
+                        <p>You can create all the shapes on any surface.</p>
+                        <p>If you drag your shape into an existing surface it will automatically turn it into a subtractive brush for you.</p>
+                        <p>Creating doors and windows has never been easier.</p>
                     </div>
                     <div class="clear"></div>
                 </div>
@@ -268,9 +272,9 @@
                 <div class="group">
                     <img class="example" src="assets/move2.gif" />
                     <div>
-                        <h1>MOVE A BRUSH BY DRAGGING IT OVER THE GRID</h1>
-                        <p>When you left hold your mouse button while hover over your brush you can move around on the grid.</p>
-                        <p>If you hold Z, you can move it into the up direction instead.</p>
+                        <h1>DRAG YOUR BRUSHES</h1>
+                        <p>When you left click your mouse on a brush and then hold your mouse button while dragging, you can move your selected brushes around on the grid.</p>
+                        <p>If you hold Z, you can move it into the up-down direction instead.</p>
                     </div>
                     <div class="clear"></div>
                 </div>
@@ -278,7 +282,7 @@
                 <div class="group">
                     <img class="example" src="assets/dragcopy.gif" />
                     <div>
-                        <h1>MAKING COPIES IS EASY</h1>
+                        <h1>DRAG COPY SUPPORT</h1>
                         <p>If you hold D and then drag your brush, you will drag a copy of your brush instead.</p>
                     </div>
                     <div class="clear"></div>
@@ -294,46 +298,10 @@
                 </div>
 
                 <div class="group">
-                    <img class="example" src="assets/grid_scaling.gif" />
-                    <div>
-                        <h1>CHANGE THE GRID TO CHANGE SNAPPING</h1>
-                        <p>If you change the grid size (hotkeys [ and ]),<br />you will change where your brushes will snap.<br />You can also turn off snapping altogether or change your units by clicking on the unit symbol (m/cm/mm).</p>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-
-                <div class="group">
-                    <img class="example" src="assets/axisgridsizes.gif" />
-                    <div>
-                        <h1>GRID SIZE PER AXIS</h1>
-                        <p>The grid can have a different size in different directions.</p>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-
-                <div class="group">
                     <img class="example" src="assets/localglobal.gif" />
                     <div>
                         <h1>IN LOCAL MODE GRID IS RELATIVE TO PARENT</h1>
                         <p>If the parent of the brush you're moving is rotated, the grid will also be rotated when Unity is in local mode.</p>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-
-                <div class="group">
-                    <img class="example" src="assets/rebuild.gif" />
-                    <div>
-                        <h1>REBUILD YOUR MESH</h1>
-                        <p>If for whatever reason something goes wrong, you can press this button to rebuild the scene.</p>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-
-                <div class="group">
-                    <img class="example" src="assets/wireframe.gif" />
-                    <div>
-                        <h1>SET UP YOUR SCENEVIEWS</h1>
-                        <p>Here you can see how to easily set up 2D views with the wireframe button.</p>
                     </div>
                     <div class="clear"></div>
                 </div>
@@ -404,19 +372,10 @@
                 </div>
 
                 <div class="group">
-                    <img class="example" src="assets/bounds.gif" />
-                    <div>
-                        <h1>WORK ON MULTIPLE BRUSHES AT THE SAME TIME</h1>
-                        <p>Just select the brushes you want to work with, and you can scale/rotate/move etc. them together.</p>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-
-                <div class="group">
                     <img class="example" src="assets/rotate.gif" />
                     <div>
-                        <h1>ROTATING IS EASY</h1>
-                        <p>In both object-mode and mesh-mode, when you use select the unity rotate tool <img src="assets/unitytools.png" style="vertical-align:middle" />, you can rotate your brush by dragging the edge of the brush into a circle.</p>
+                        <h1>ROTATE OVER EDGES</h1>
+                        <p>In both object-mode and mesh-mode, when you use select the unity rotate tool <img src="assets/unity_tools_rotate.png" style="vertical-align:middle" />, you can rotate your brush by dragging the edge of the brush into a circle.</p>
                     </div>
                     <div class="clear"></div>
                 </div>
@@ -424,17 +383,18 @@
                 <div class="group">
                     <img class="example" src="assets/scale.gif" />
                     <div>
-                        <h1>SCALING IS EASY</h1>
+                        <h1>SCALE BY DRAGGING</h1>
                         <p>In object-mode you can also scale your brushes by moving the sides of the bounding box around your brushes.</p>
+                        <p>Scale into a negative size allows you to mirror your selection</p>
                     </div>
                     <div class="clear"></div>
                 </div>
 
                 <div class="group">
-                    <img class="example" src="assets/localglobal.gif" />
+                    <img class="example" src="assets/bounds.gif" />
                     <div>
-                        <h1>LOCAL/GLOBAL MODE</h1>
-                        <p>If Unity is in local mode <img src="assets/rotation_modes.gif" style="vertical-align:middle" /></p><p>All movement, rotations and scaling will be done in the direction the brush is rotated.</p>
+                        <h1>MULTIPLE BRUSHES AT THE SAME TIME</h1>
+                        <p>Just select the brushes you want to work with, and you can scale/rotate/move etc. them together.</p>
                     </div>
                     <div class="clear"></div>
                 </div>
@@ -442,7 +402,7 @@
                 <div class="group">
                     <img class="example" src="assets/dragndropmaterials.gif" />
                     <div>
-                        <h1>ASSIGNING MATERIALS IS EASY</h1>
+                        <h1>DRAG MATERIALS</h1>
                         <p>Just drag and drop the materials on the brush sides you want them to be on.</p>
                         <p>If you selected multiple surfaces the material will be applied to all of them.</p>
                     </div>
@@ -452,7 +412,7 @@
                 <div class="group">
                     <img class="example" src="assets/dragtexgencopy.gif" />
                     <div>
-                        <h1>COPYING MATERIALS IS EASY</h1>
+                        <h1>COPY AND SMEAR MATERIALS</h1>
                         <p>In surface-mode, after you select a surface, you can press G onto another surface to copy your material to another surface.</p>
                         <p>If you hold G and drag over multiple surfaces it'll make the texture coordinates flow over those surfaces. This even works when surfaces are not connected!</p>
                     </div>
@@ -462,7 +422,7 @@
                 <div class="group">
                     <img class="example" src="assets/paintselect.gif" />
                     <div>
-                        <h1>SELECTING MATERIALS IS EASY</h1>
+                        <h1>SELECT MATERIALS BY DRAGGING</h1>
                         <p>In surface-mode you can select your surfaces by just dragging over them while holding control, shift or alt to remove/add surfaces from/to the selection.</p>
                     </div>
                     <div class="clear"></div>
@@ -471,8 +431,8 @@
                 <div class="group">
                     <img class="example" src="assets/texture_rotate.gif" />
                     <div>
-                        <h1>ROTATE YOUR TEXTURE</h1>
-                        <p>If Unity is in rotate mode <img src="assets/tools.gif" style="vertical-align:middle" /></p><p>You can press your mouse where you want to rotate your texture coordinates around, pull and just rotate around it.</p>
+                        <h1>ROTATE MATERIALS</h1>
+                        <p>If Unity is in rotate mode <img src="assets/unity_tools_rotate.png" style="vertical-align:middle" /></p><p>You can press your mouse where you want to rotate your texture coordinates around, pull and just rotate around it.</p>
                     </div>
                     <div class="clear"></div>
                 </div>
@@ -480,8 +440,8 @@
                 <div class="group">
                     <img class="example" src="assets/texture_translate.gif" />
                     <div>
-                        <h1>DRAG YOUR TEXTURE</h1>
-                        <p>If Unity is in move mode <img src="assets/tools.gif" style="vertical-align:middle" /></p><p>You can press your mouse and just drag your texture over the surface of your brush</p>
+                        <h1>MOVE MATERIALS</h1>
+                        <p>If Unity is in move mode <img src="assets/unity_tools_move.png" style="vertical-align:middle" /></p><p>You can press your mouse and just drag your texture over the surface of your brush</p>
                         <p>Note that the texture is also snapped to the grid if snapping is on and this may make it look like it's moving in a different direction, even though it's not.</p>
                     </div>
                     <div class="clear"></div>
@@ -502,16 +462,6 @@
                     <div>
                         <h1>DISCARD UNNECESSARY SURFACES</h1>
                         <p>Sometimes you do not want certain surfaces to end up in your runtime, fortunately you can simply select and discard them.</p>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-
-                <div class="group">
-                    <img class="example" src="assets/invisible.gif" />
-                    <div>
-                        <h1>REMOVE YOUR CLUTTER</h1>
-                        <p>Sometimes you want to be able to see all kinds of invisible surfaces, but other times you do not.</p>
-                        <p>By using the dropdown in the bottom right corner you can turn all kinds of helper surfaces on / off (image is outdated).</p>
                     </div>
                     <div class="clear"></div>
                 </div>

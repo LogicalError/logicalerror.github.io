@@ -32,7 +32,8 @@
 
 .CSG-barLinks a:link,
 .CSG-barLinks a:visited,
-.CSG-barLinks a:hover
+.CSG-barLinks a:hover,
+.CSG-barLinks a:active
 {
     color: rgb(255, 255, 255);
     text-decoration: none;
@@ -41,12 +42,12 @@
 	margin-right: 15px;
 }
 
-.CSG-barLinks a:active
+.CSG-barLinks a:link .CSG-active,
+.CSG-barLinks a:visited .CSG-active,
+.CSG-barLinks a:hover .CSG-active,
+.CSG-barLinks a:active .CSG-active
 {
-    text-decoration: none;
-    text-transform: uppercase;
-	margin-left: 15px;
-	margin-right: 15px;
+    color: rgb(255, 102, 0);
 }
 
 .CSG-barLinks span

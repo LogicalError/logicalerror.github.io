@@ -1,0 +1,143 @@
+
+.CSG-bar, .CSG-bar-notfixed
+{
+	display: table-row;
+	left: 0px;
+    height: auto;
+    top: 0px;
+    width: 100%;
+	padding: 0px;
+    margin: 0px;
+    z-index: 100;
+    background-image: none;
+    background-color: rgb(42, 42, 42);
+}
+
+.CSG-bar { position: fixed; }
+.CSG-bar-notfixed { height: 20px; }
+
+.CSG-barLinks
+{
+	color: white;
+	display: block;
+	text-align:center;
+	margin: auto;
+    margin-top: 4px;
+	height: auto;
+    font-family: 'Roboto Condensed';
+    font-weight: bold;
+    font-size: 19px;
+    color: rgb(255, 102, 0);
+}
+
+.CSG-barLinks a:link,
+.CSG-barLinks a:visited,
+.CSG-barLinks a:hover,
+.CSG-barLinks a:active
+{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    text-transform: uppercase;
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+.CSG-barLinks span
+{
+	margin-left: 15px;
+	margin-right: 15px;
+}
+.CSG-barLinks:first-child { margin-left: 0px; }
+.CSG-barLinks:last-child { margin-right: 0px; }
+    
+.CSG-barLinks a:hover,
+.CSG-barLinks a:active
+{
+    text-decoration: none;
+}
+
+.CSG-title 
+{
+	float:left;
+	white-space:nowrap;
+    font-family: 'Roboto Condensed';
+    font-weight: bold;
+    font-size: 24px;
+    height: 30px;
+    margin-top: auto;
+    margin-bottom: auto;
+    opacity: 1;
+    text-align: left;
+	padding-left: 6px;
+    color: rgb(255, 255, 255);
+	margin-right: 10px;
+	overflow: hidden;
+}
+
+.CSG-logo-tiny
+{
+    vertical-align:middle;
+    padding-bottom:3px;
+}
+
+.CSG-small {
+	display: none;
+    position: relative;
+    top: 1px;
+}
+
+.CSG-real-time {
+	display:none;
+    position: relative;
+    color: rgb(255, 102, 0);
+    text-transform: lowercase;
+}
+
+.CSG-contacts 
+{
+	float:right;
+ 	white-space:nowrap;
+    font-family: 'Roboto Condensed';
+    font-weight: bold;
+    font-size: 24px;
+    height: 30px;
+    margin-top: auto;
+    margin-bottom: auto;
+    opacity: 1;
+    text-align: right;
+    top: 1px;
+    right: 5px;
+	margin-left: auto;
+	margin-right: 0px;
+	overflow: hidden;
+}
+
+.CSG-twitter {
+	padding-right: 10px;
+}
+
+.CSG-email {
+	position:relative;
+	top: 2px;
+	padding-right: 10px;
+}
+
+@media (min-width: 900px) 
+{
+	.CSG-real-time
+	{
+		display: inline;
+	}
+	.CSG-small {
+		display: inline;
+	}
+}
+
+@media print 
+{
+    .CSG-bar { display: none; height: 0px; visibility: hidden; }
+	.CSG-real-time 
+	{
+	  color: black;
+	}
+}

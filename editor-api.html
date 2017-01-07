@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>RealtimeCSG</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Oswald|Roboto+Condensed" rel="stylesheet" type="text/css">
+    <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div class="bar">
+        <span class="title">
+            <img src="assets/logo3_24.png" class="csg-logo-tiny" />
+            <span class="real-time">realtime</span>&nbsp;<span class="CSG-small">CSG </span>&nbsp;
+        </span>
+        <span class="contacts">
+            <span class="email"><a href="mailto:sander.vanrossen@gmail.com" target="_self">
+                <img src="assets/ic_email_white_24dp_1x.png" /></a></span>
+            <span class="twitter"><a href="https://twitter.com/logicalerror" target="_blank">
+                <img src="assets/twitter.png" /></a></span>
+        </span>
+        <span class="barLinks">
+            <a href="https://logicalerror.github.io/" target="_self">FEATURES</a>
+            <span>INFO</span>
+            <a href="https://prenominal.nl/updates/" target="_self">UPDATES</a>
+            <a href="https://prenominal.nl/forum3/" target="_self">FORUMS</a>
+            <a href="https://github.com/LogicalError/realtime-CSG-for-unity/issues" target="_blank">FEEDBACK</a>
+        </span>
+    </div>
+
+    <br />
+    <center id="content2">
+        <div id="documentationtab">
+            <a href="getstarted.html" target="_self">GET STARTED</a><br />
+            <a href="keyboardlayout.html" target="_self">KEYBOARD LAYOUT</a><br />
+            <a href="tips.html" target="_self">TIPS & BEST PRACTICES</a><br />
+            <span>EDITOR API</span><br />
+            <a href="https://www.youtube.com/playlist?list=PL7mogqtGTzCosI7UYj5p0jNBzbYWEazi6" target="_blank">VIDEOS</a><br />
+        </div>
+
+        <div id="documentation">
+            <div>
+                <h1>Editor API</h1>
+                <p>Note: Both the editor API, and the documentation for it, are a <span class="emphasis">work in progress</span>.</p>
+                <br />
+                <h2>public class CSGBrush</h2>
+                <div class="indent">
+                    <p>This component represents a single convex CSG brush. Setting it's <span class="emphasis">OperationType</span> field allows you to control if this brush will be <span class="emphasis">Additive, Subtractive or Intersecting</span>.</p>
+                </div>
+                <h2>public class CSGOperation</h2>
+                <div class="indent">
+                    <p>This component represents a branch in the CSG tree that can contain multiple brushes and/or operations, that themselves can contain multiple brushes and operations.</p>
+                    <p>When the <span class="emphasis">HandleAsOne</span> field is set to true, then every time you select one of the children of this operation, you will select the entire operation. This is useful for grouping things.</p>
+                    <p>Setting it's <span class="emphasis">OperationType</span> field allows you to control if this operation will be <span class="emphasis">Additive, Subtractive or Intersecting</span>.</p>
+                    <p>If you set <span class="emphasis">PassThrough</span> to true, then it will still act as a single group in the editor, but it's ignored as an operation by the CSG algorithm. This is useful in combination with HandleAsOne to group things together without side effects.</p>
+                </div>
+                <h2>public class CSGModel</h2>
+                <div class="indent">
+                    <p>This component represents a CSG model. This represents all the meshes that will be generated from all it's child brushes and operations. At runtime all the meshes will replace the model.</p>
+                </div>
+                <br />
+                <br />
+                <h2>public static class CSGModelManager</h2>
+
+                <div class="indent">
+                    <h3>public static void ForceRebuild()</h3>                    
+                    <div class="indent">
+                        <p>This method allows you to force a full rebuild of all models in the current loaded scenes.
+                            If any models has been changed, any static method with an <span class="emphasis">CSGModelModifiedEventAttribute</span> will be called (see below).</p>
+                    </div>
+
+		            <h3>public static void EnsureBuildFinished()</h3>
+                    <div class="indent">
+                        <p>When the method <span class="emphasis">EnsureBuildFinished</span> is finished, all changes to all models are guaranteed to be handled, and all meshes updated.
+                            If any models has been changed, any static method with an <span class="emphasis">CSGModelModifiedEventAttribute</span> will be called (see below).</p>
+                    </div>
+
+                    <h3>public static CSGModel[] GetAllModel()</h3>                    
+                    <div class="indent">
+                        <p>Returns all the current active models in the currently loaded scene(s) and returns them in an array.</p>
+                    </div>
+
+		            <h3>public static GameObject[] GetModelMeshes(CSGModel model)</h3>                    
+                    <div class="indent">
+                        <p>Returns all the meshes that have been generated for the given model (if any).</p>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <h2>public class CSGModelModifiedEventAttribute : Attribute</h2>
+                
+                <div class="indent">
+                    <p>The CSGModelModifiedEvent attribute allows you to add create a callback that is called every time a model is modified:</p>
+<p><pre>
+[CSGModelModifiedEvent]
+static void OnCSGModelModified(CSGModel modifiedModel, GameObject[] modifiedMeshes)
+{
+    // ... handle the event here ...
+}
+</pre></p>
+                    <p>The model parameter is the model that has been modified</p>
+                    <p>The modifiedMeshes parameter holds all the meshes of this model, that have changed since the last time it's been updated. It will not give you all it's meshes, only the modified ones.</p>
+                </div>
+                <br />
+                <br />
+                <h2>public static class BrushFactory</h2>
+                <div class="indent">
+
+                    <h3><pre>
+public static CSGBrush 
+       CreateBrushFromPlanes(
+                    Transform           parent, 
+                    string              brushName, 
+                    UnityEngine.Plane[] planes, 
+                    Vector3[]           tangents, 
+                    Vector3[]           binormals,
+                    Material[]          materials,
+                    Matrix4x4[]         textureMatrices,
+                    TextureMatrixSpace  textureMatrixSpace)</pre></h3>
+                    <p>This method creates a brush by defining it as a shape enclosed by a number of infinite planes. Only valid shapes defined by the planes will create a brush.</p>
+                    <p>Planes, tangents, binormals, materials and textureMatrices all need to have the same length.</p>
+                    <p>Tangents, binormals, materials and textureMatrices are optional and will be replaced with appropriate defaults if not set.</p>
+                    <p>The textureMatrices are only allowed to rotate, translate and scale the texture coordinates. 
+                        The textureMatrixSpace allows you to specifiy if the given texture matrices calculate the texture coordinates for all the vertices, in world-space or plane-space.</p>
+
+                    <h3><pre>
+public static bool 
+       SetBrushFromPlanes(
+                    CSGBrush            brush, 
+                    UnityEngine.Plane[] planes, 
+                    Vector3[]           tangents, 
+                    Vector3[]           binormals, 
+                    Material[]          materials, 
+                    Matrix4x4[]         textureMatrices, 
+                    TextureMatrixSpace  textureMatrixSpace)</pre></h3>
+                    <p>This method modifies an existing brush with a new shape defined as a shape enclosed by a number of infinite planes. Only valid shapes will work.</p>
+                    <p>Planes, tangents, binormals, materials and textureMatrices all need to have the same length.</p>
+                    <p>Tangents, binormals, materials and textureMatrices are optional and will be replaced with appropriate defaults if not set.</p>
+                    <p>The textureMatrices are only allowed to rotate, translate and scale the texture coordinates. 
+                        The textureMatrixSpace allows you to specifiy if the given texture matrices calculate the texture coordinates for all the vertices, in world-space or plane-space.</p>
+                    
+                    <h3><pre>
+public static CSGBrush 
+       CreateCubeBrush(Transform parent, 
+                       string brushName, 
+                       Vector3 size)</pre></h3>
+                    <p>This method creates a cube with a given size.</p>
+
+                    <h3><pre>
+public static bool 
+       SetBrushCubeMesh(CSGBrush brush, 
+                        Vector3 size)</pre></h3>
+                    <p>This method modifies an existing brush to become a cube with a given size.</p>
+                </div>
+            </div>
+        </div>
+        <div style="page-break-before:always">
+     </div>
+</body>
+</html>

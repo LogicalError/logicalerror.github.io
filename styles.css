@@ -598,7 +598,7 @@ div .leftalign,
 {
      display:inline-block;
     color: white;
-	width: 120px;
+	/*width: 120px;*/
 	text-align: left;
     font-size:smaller;
 }

@@ -241,11 +241,14 @@ body {
 	float:right;
 	text-align: left;
 	width: 754px;
+	padding-left: 10px;
 	padding-right: 20px;
+	background-color: white;
 }
 #documentation h1
 {
-	text-align: center;
+	text-align: left;
+	color: black;
 }
 
 #content .group .example,
@@ -343,7 +346,7 @@ body {
 
 #content div h1,
 #content3 div h1 {
-    color: rgb(255, 255, 255);
+    color: white;
     font-family: Oswald;
     font-weight: bold;
     font-size: 30px;
@@ -361,22 +364,24 @@ body {
 	padding-top:50px;
 }
 #documentation div h1 {
-    color: rgb(255, 255, 255);
+    color: black;
     font-family: Oswald;
     font-weight: bold;
     font-size: 30px;
     text-transform: uppercase;
 }
-#documentation div h2,
+#documentation div h2 {
+    color: black;
+    font-size: 22px;
+}
 #documentation div h3 {
-    color: rgb(255, 255, 255);
-    font-size: 20px;
+    color: black;
+    font-size: 18px;
 }
 
 #documentation div h2
 {
     font-weight: bold;
-    font-size: 20px;
 }
 
 #content .group:nth-child(even) div h1,
@@ -574,22 +579,25 @@ body {
 div .leftalign,
 .leftalign
 {
-     display:inline-block;
-     text-align:left;   
-     margin: 0px;
-     padding: 0px;
+    display:inline-block;
+    text-align:left;   
+    margin: 0px;
+    padding: 0px;
     page-break-inside: avoid;
 }
 
 .emphasis
 {
-    color: white;
+    color: black;
+	font-style: italic;
+	font-weight: bold;
 }
 
 .key
 {
     display:inline-block;
-    color: white;
+	color: black;
+	font-weight: bold;
 	width: 140px;
 	text-align: left;
 }
@@ -597,7 +605,7 @@ div .leftalign,
 .keyversion
 {
      display:inline-block;
-    color: white;
+    color: black;
 	/*width: 120px;*/
 	text-align: left;
     font-size:smaller;
@@ -617,7 +625,7 @@ div .leftalign,
     font-family: 'Roboto Condensed';
     font-weight: normal;
     font-size: 18px;
-	color: white;
+	color: black;
 	text-decoration: none;
 	margin-bottom: 5px;
 }
@@ -638,7 +646,7 @@ div .leftalign,
 	padding: 10px;
 	margin: 10px;
 	margin-top: 10px;
-	background-color:white;
+	background-color: white;
 }
 
 .login

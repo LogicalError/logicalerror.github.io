@@ -1,0 +1,728 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>RealtimeCSG</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <meta charset="utf-8">
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-89948095-1', 'auto');
+      ga('send', 'pageview', location.pathname);
+    </script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Oswald|Roboto+Condensed" rel="stylesheet" type="text/css">
+    <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="manifest.json">
+    <style>
+        table { border-spacing:0;border-collapse:collapse; border:0px; width:100%}
+        td,tr {height:0pt;border:0px;vertical-align:top}
+        .left { text-align:left; font-family: 'Roboto Condensed'; font-style: italic; }
+        .center { text-align:center; font-family: 'Roboto Condensed'; font-style: italic; }
+        td img { display:inline; } 
+        td p { margin-left: 8px; }
+        td h2 { margin-left: 8px; }
+        td p:first-child { margin-top:0px; }
+        ol { font-family: 'Roboto Condensed'; }
+        #documentation div h1 { text-align:left; color: black; }
+        #documentation div h2 { font-family: 'Roboto Condensed'; color: black;}
+        #documentation div h3 { font-family: 'Roboto Condensed'; font-weight: normal; color: black;}
+        li p { margin:0px; }
+        .border { border: 1px solid black;padding: 8px; }
+        #documentation a,
+        #content3 a { color: black; font-style: italic; text-decoration: underline; }
+    </style>
+</head>
+    
+<body>
+    <div class="bar">
+        <span class="title">
+            <img src="assets/logo3_24.png" class="csg-logo-tiny" />
+            <span class="real-time">realtime</span>&nbsp;<span class="CSG-small">CSG </span>&nbsp;
+        </span>
+        <span class="contacts">
+            <span class="email"><a href="mailto:sander.vanrossen@gmail.com" target="_self">
+                <img src="assets/ic_email_white_24dp_1x.png" /></a></span>
+            <span class="twitter"><a href="https://twitter.com/logicalerror" target="_blank">
+                <img src="assets/twitter.png" /></a></span>
+        </span>
+        <span class="barLinks">
+            <a href="https://logicalerror.github.io/" target="_self">FEATURES</a>
+            <a href="https://logicalerror.github.io/evaluate.html" target="_self">TRY</a>
+            <span>DOCUMENTATION</span>
+            <a href="https://prenominal.nl/updates/" target="_self">UPDATES</a>
+            <a href="https://prenominal.nl/forum3/" target="_self">FORUMS</a>
+            <a href="https://github.com/LogicalError/realtime-CSG-for-unity/issues" target="_blank">FEEDBACK</a>
+        </span>
+    </div>
+
+    <br />
+    <center id="content2">
+        <div id="documentationtab">
+            <span>MANUAL</span><br />
+            <a href="keyboardlayout.html" target="_self">KEYBOARD LAYOUT</a><br />
+            <a href="editor-api.html" target="_self">EDITOR API</a><br />
+            <a href="https://www.youtube.com/playlist?list=PL7mogqtGTzCosI7UYj5p0jNBzbYWEazi6" target="_blank">VIDEOS</a><br />
+        </div>
+        <div id="documentation" style="background-color:white">
+            <div>
+                <h1 id="what_is_csg">What is CSG?</h1>
+                <p>CSG stands for Constructive Solid Geometry and is a technique to build <a href="#models">models</a> by combining and removing simple shapes called <a href="#brushes">brushes</a>, using <a href="#boolean_operations">boolean operations</a>.</p>
+                <p>The advantage of using CSG for level design is that it's very easy to both define and modify spaces within a game, to start simple and refine later on.</p>
+                <p>Since level design is a lot about iteration and not so much about generating geometry, CSG is a more appropriate technology to quickly prototype and form the basis of your levels.</p>
+                <p>Brushes can easily be moved around, it takes seconds to move windows, doorways and whole sections of a level around and you don't need to worry about vertices & triangles or the gaps between them.</p>
+                <p>For this reason CSG has traditionally been used for level design by many companies throughout the history of the game industry.</p>                
+            </div>
+            <div>
+                <h1 id="brushes">What are brushes?</h1>
+                <p>Brushes are simple shapes that act as building blocks to build more complicated shapes using <a href="#boolean_operations">boolean operations</a>.</p>
+                <table>
+                    <tr>
+                        <td class="center"><img src="images/brush_convex.jpg" width="200" height="198" /></td>
+                        <td class="center"><img src="images/brush_non_convex.jpg" width="200" height="198" /></td>
+                    </tr>
+                    <tr>
+                        <td class="center">convex</td>
+                        <td class="center">non-convex</td>
+                    </tr>                    
+                </table>
+                <p>Brushes are restricted to be convex, this means that you can never have surfaces that create an inwards corner. So for instance spheres, cubes, pyramids and cylinders are all fine. But an L shape isn’t convex.</p>
+                <table>
+                    <tr>
+                        <td class="center"><img src="images/brush_multi_convex.jpg" width="264" height="239" /></td>
+                    </tr>
+                    <tr>
+                        <td class="center">multiple convex brushes</td>
+                    </tr>                    
+                </table>
+                <p>Fortunately it’s possible to build any shape out of multiple convex shapes. An L shape can be created from 2 box shapes for instance. Real Time-CSG has tools to free-draw shapes that will generate all the brushes under the hood for you.</p>
+                <p>For more information about creating brushes, see the <a href="#generate_edit_mode">generate edit mode</a> section.</p>
+            </div>
+            <div>
+                <h1 id="boolean_operations">What are boolean operations?</h1>
+                <p>Boolean operations define how brushes interact with each other. The following boolean operations are supported by real-time CSG.</p>
+                <table>
+                    <tr>
+                        <td class="center"><img src="images/boolean_additive.jpg" width="188" height="188" /></td>
+                        <td class="center"><img src="images/boolean_intersection.jpg" width="188" height="188" /></td>
+                        <td class="center"><img src="images/boolean_subtractive.jpg" width="188" height="188" /></td>
+                    </tr>
+                    <tr>
+                        <td class="center"><img src="images/icon_pers_csg_addition_small.png" width="17" height="17" /> Addition of<br />cube and cylinder</td>
+                        <td class="center"><img src="images/icon_pers_csg_intersection_small.png" width="17" height="17" /> Intersection of<br />cube and cylinder</td>
+                        <td class="center"><img src="images/icon_pers_csg_subtraction_small.png" width="17" height="17" /> Subtraction of<br />cube by cylinder</td>
+                    </tr>
+                </table>
+                <p>Sometimes you’ll also see “<img src="images/icon_pers_pass_through_on.png" width="17" height="17" /> Passthrough” which is a special mode that doesn’t actually perform a CSG operation, but helps group things together when, for instance, drag & dropping. 
+                    For more information about passthrough mode see the <a href="#passthrough">passthrough section of drag & drop</a>.</p>
+                <table>
+                    <tr>
+                        <td class="left"><img src="images/hierarchical.jpg" width="213" height="213" /></td>
+                        <td style="text-align:left">
+                            <p>To make more interesting shapes you can perform boolean operations on the results of other boolean operations.</p>
+                            <p>To the left you can see a shape defined by subtracting another shape, which itself is defined as a cube subtracted by a cylinder.</p>
+                            <p>Since all the shapes and operations are non-destructive and real-time, you can move, rotate, scale or modify all the basic shapes and their operations and the final mesh will change accordingly.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="left"><img src="images/hierarchy.png" width="213" height="130" /></td>
+                        <td style="text-align:left">
+                            <p>The picture on the left you can see how the hierarchy looks to get the previously shown picture. All CSG operations are applied from top to bottom.</p>
+                            <p>The large cube is an additive brush from which all items below are removed.</p>
+                        </td>
+                    </tr>
+                </table>
+                <p>The second item is a subtraction operation which combines the items inside it, and subtract that from the Large cube which is above it in the hierarchy.</p>
+                <p>The small cube is an additive brush from which the last item, the cylinder, is subtracted. Since the “subtraction operation” is set to subtraction, the shape defined by subtracting the cylinder from the cube is subtracting from everything above it in the hierarchy.</p>
+            </div>
+            <div>
+                <h1 id="models">What are models?</h1>
+                <p>Models are objects that hold all the meshes that are created from all the brushes and operations that are contained by the model. At runtime (in play-mode or in your build) all the operations and brushes are removed and replaced by these meshes.</p>
+                <p>This means that anything you can do with a regular Unity mesh at runtime, you can do with a model as well.</p>
+                <table>
+                    <tr>
+                        <td class="center"><img src="images/world_not_inverted.jpg" width="310" height="217" /></td>
+                        <td class="center"><img src="images/world_inverted.jpg" width="310" height="217" /></td>
+                    </tr>
+                    <tr>
+                        <td class="center">regular world</td>
+                        <td class="center">inverted world</td>
+                    </tr>
+                </table>
+                <p>An important setting you can set on models is the “Inverted world” setting, this will make the model consider the world solid by default, and you’ll need to remove from it to create geometry. This is useful for when the geometry you want to make doesn’t have any outer walls and you don’t want to be bothered with manually discarding (removing) these unused surfaces.</p>
+                <p>For more information about models, see the <a href="#model_settings">model settings and tools</a> section, for more information about discarding surfaces, see the <a href="#surface_edit">surface edit</a> mode.</p>
+            </div>
+            <div>
+                <h1 id="scene_view">The scene view</h1>
+                <p>Here is an overview of all the elements that you’ll see in your view when Real Time-CSG is enabled. Note that when Real Time-CSG is disabled (you can toggle this by pressing control-F3) all the extra elements will not be shown and you will just see the default unity scene view.</p>
+                <p>Also note that if you click on the x buttons of the "edit modes" and "tool" windows, then you convert the in scene windows into a <a href="#dockable_window">dockable window</a>.</p>
+                 <table>
+                    <tr>
+                        <td class="center"><img src="images/view.png" width="624" height="452" /></td>
+                    </tr>                    
+                </table>
+                <ol type="1">
+                    <li>Transform Tools. See <a href="#edit_modes">edit modes</a> for more information.</li>
+                    <li>Transform Gizmo Toggles. See <a href="#grid">the grid</a> for more information. </li>
+                    <li>Edit modes. See <a href="#edit_modes">edit modes</a> for more information</li>
+                    <li>The grid. See <a href="#grid">the grid</a> for more information</li>
+                    <li>Edit mode helper window. See <a href="#edit_modes">edit modes</a> for more information</li>
+                    <li>Turn grid rendering on/off. See <a href="#grid">the grid</a> for more information.</li>
+                    <li>Lock movement along X, Y and/or Z axis. See <a href="#grid">the grid</a> for more information.</li>
+                    <li>Turn snapping on or off. See <a href="#grid">the grid</a> for more information.</li>
+                    <li>The grid snapping step size for movement. See <a href="#grid">the grid</a> for more information</li>
+                    <li>Click to cycle between the units to show the snapping step size in (meters, centimeters, feet, inches).<br />
+                        See <a href="#grid">the grid</a> for more information.</li>
+                    <li>Double (+) or half (-) the grid snapping step size. See <a href="#grid">the grid</a> for more information.</li>
+                    <li>The snapping size for rotation. (used while rotating)</li>
+                    <li>Double (+) or half (-) the rotation snapping</li>
+                    <li>The scale snapping size. (used while scaling)</li>
+                    <li>Multiply the scale snapping size by 10 (+) or divide by 10 (-)</li>
+                    <li>Toggle wireframe mode for this view. See <a href="#wireframe">wireframe</a> mode for more information.</li>
+                    <li>Toggle which helper surfaces to show. See <a href="#helper_surfaces">helper surfaces</a> for more information.</li>
+                    <li>Force rebuild all the CSG models.</li>
+                </ol>
+            </div>
+            <div>
+                <h1 id="dockable_window">Dockable window</h1>
+                <p>Both the in scene “edit modes” and “tool window” have an x button in the top right corner.</p>
+                <table>
+                    <tr>
+                        <td class="left"><img src="images/dockable_window_not.png" width="518" height="163" /></td>
+                    </tr>
+                </table>
+                <p>When clicked, both windows will change in a combined dockable window:</p>
+                <table>
+                    <tr>
+                        <td class="left"><img src="images/dockable_window.png" width="436" height="156" /></td>
+                    </tr>
+                </table>
+                <p>You can dock this window just like, for instance, an inspector window. If you close that window it’ll revert back to the in scene windows above.</p>
+            </div>
+            <div>
+                <h1 id="grid">The grid</h1>
+                <table>
+                    <tr>
+                        <td class="center"><img src="images/button_grid_turn_on_off.png" width="28" height="18" /></td>
+                        <td class="center"><img src="images/snapping_toggle.png" width="28" height="18" /></td>
+                    </tr>
+                    <tr>
+                        <td class="center">show/hide grid</td>
+                        <td class="center">enable/disable snapping</td>
+                    </tr>
+                </table>
+                <p>The grid lines show where, if snapping is enabled, the brushes are snapped against. The orientation of the grid shows in what direction the axi are turned.</p>
+                <table>
+                    <tr>
+                        <td class="center"><img src="images/grid_global.jpg" width="300" height="233" /></td>
+                        <td class="center"><img src="images/grid_local.jpg" width="300" height="233" /></td>
+                    </tr>
+                    <tr>
+                        <td class="center"><img src="images/pivot_global.png" width="128" height="18" /></td>
+                        <td class="center"><img src="images/pivot_local.png" width="128" height="18" /></td>
+                    </tr>
+                    <tr>
+                        <td class="center">unity set to global mode</td>
+                        <td class="center">unity set to local mode</td>
+                    </tr>
+                </table>
+                <p>If the transform gizmo toggles (see the <a href="#scene_view">scene view</a>) are set to global the grid will always be orientated with an unrotated XZ plane. If it’s set to local, however, then the grid shows how the current selected object is rotated.</p>
+                <table>
+                    <tr>
+                        <td class="center"><img src="images/grid_1m.jpg" width="300" height="258" /></td>
+                        <td class="center"><img src="images/grid_25cm.jpg" width="300" height="258" /></td>
+                    </tr>
+                    <tr>
+                        <td class="center">grid snapping set to 1 m</td>
+                        <td class="center">grid snapping set to 0.25 m</td>
+                    </tr>
+                </table>
+                <p>The grid snapping step size sets the distance between the lines which you snap your brushes against if snapping is enabled.</p>
+                <table>
+                    <tr>
+                        <td class="center"><img src="images/snapping_uniform.png" width="121" height="18" /></td>
+                        <td class="center"><img src="images/snapping_double_half.png" width="38" height="18" /></td>
+                    </tr>
+                    <tr>
+                        <td class="center">manually set the grid size</td>
+                        <td class="center">double (+) or half (-) the grid size</td>
+                    </tr>
+                </table>
+                <p>You can manually set the grid size in the number section, or click on the +/- buttons to double or half the grid size.</p>
+                <table>
+                    <tr>
+                        <td class="center"><img src="images/snapping_uniform.png" width="121" height="18" /></td>
+                        <td class="center"><img src="images/snapping_not_uniform.png" width="265" height="18" /></td>
+                    </tr>
+                    <tr>
+                        <td class="center">set the same grid size for X, Y and Z</td>
+                        <td class="center">set a different grid size for X, Y and Z</td>
+                    </tr>
+                </table>
+                <p>If you click on position then you can toggle between the grid size being set for all axis uniformly or for all axis individually.</p>
+                <table>
+                    <tr>
+                        <td class="center"><img src="images/snapping_m.png" width="140" height="18" /></td>
+                        <td class="center"><img src="images/snapping_cm.png" width="146" height="18" /></td>
+                        <td class="center"><img src="images/snapping_mm.png" width="148" height="18" /></td>
+                    </tr>
+                    <tr>
+                        <td class="center">unit set to meters</td>
+                        <td class="center">unit set to centimeters</td>
+                        <td class="center">unit set to milimeters</td>
+                    </tr>
+                    <tr>
+                        <td class="center"><img src="images/snapping_ft.png" width="140" height="18" /></td>
+                        <td class="center"><img src="images/snapping_inches.png" width="137" height="18" /></td>
+                        <td class="center"></td>
+                    </tr>
+                    <tr>
+                        <td class="center">unit set to feet</td>
+                        <td class="center">unit set to inches</td>
+                        <td class="center"></td>
+                    </tr>
+                </table>
+                <p>If you click on the little symbol behind the position value you can cycle between all the different distance units and the values will be shown in those values. Note that the default internal unit is meters.</p>
+                <table>
+                    <tr>
+                        <td class="center"><img src="images/x_axis_not_locked.jpg" width="52" height="18" /></td>
+                        <td class="center"><img src="images/x_axis_locked.jpg" width="52" height="18" /></td>
+                    </tr>
+                    <tr>
+                        <td class="center">X axis not locked</td>
+                        <td class="center">X axis locked</td>
+                    </tr>
+                </table>
+                <p>Individual axis can also be locked which makes it impossible to use those axi, which is useful when you want to avoid accidentally moving in a particular direction.</p>
+            </div>
+            <div>
+                <h1 id="wireframe">Wireframe mode</h1>
+                <table>
+                    <tr>
+                        <td class="center"><img src="images/wireframe_toggle.png" width="27" height="18" /></td>
+                        <td class="center"><img src="images/effects_button.png" width="38" height="18" /></td>
+                    </tr>
+                    <tr>
+                        <td class="center">wireframe mode toggle</td>
+                        <td class="center">effects button</td>
+                    </tr>
+                </table>
+                <p>If you toggle the “wireframe mode button” in the toolbar (see the <a href="#scene_view">scene view</a> for more information) your sceneview will show your scene but in a special wireframe mode with cleaner lines than the regular unity wireframe mode. You will probably also want to turn off the environment map by clicking on the “effects button”.</p>
+                <table>
+                    <tr>
+                        <td class="center"><img src="images/wireframe_mode_off_env_on.jpg" width="298" height="271" /></td>
+                        <td class="center"><img src="images/wireframe_mode_off_env_off.jpg" width="298" height="271" /></td>
+                    </tr>
+                    <tr>
+                        <td class="center">wireframe mode off, environment map on</td>
+                        <td class="center">wireframe mode off, environment map off</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="center"><img src="images/wireframe_mode_on_env_on.jpg" width="298" height="271" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"  class="center">wireframe mode on, environment map off</td>
+                    </tr>
+                </table>
+                <p>This makes it easier to see things when things overlap each other. By clicking multiple times on the same location you can cycle between all the objects that overlap each other.</p>
+                <p>Note: Setting this mode sets a special shader and attaches it to the sceneview, unfortunately Unity stores this connection computer-wide. This means that if you open another project that doesn’t have Realtime-CSG  it’ll try to use a shader for that view, that doesn’t exist in that project. You can fix this by changing the layout in the top right corner.</p>
+            </div>
+            <div>
+                <h1 id="helper_surfaces">Helper surfaces</h1>
+                <p>Real Time-CSG can show several helper surfaces that help visualize certain surface properties for surfaces that are not actually visible at runtime The following helper surfaces can be shown:</p>
+                <table>
+                    <tr>
+                        <td class="left"><img src="images/helper_surfaces_discarded.jpg" width="194" height="200" /></td>
+                        <td>
+                            <h2>Discarded surfaces</h2>
+                            <p>These are surfaces that are marked as ‘discarded’ and will not be rendered or be part of the collision mesh. See the <a href="#surface_edit">surface edit mode</a> for more information about how to flag a surface as being flagged as discarded.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="left"><img src="images/helper_surfaces_shadow_only.jpg" width="194" height="200" /></td>
+                        <td>
+                            <h2>Shadow only surfaces</h2>
+                            <p>These are surfaces (or entire models) that are flagged as “Shadow Only”. These surfaces are only visible to the shadow rendering code. This allows you to see these surfaces.
+See the <a href="#surface_edit">surface edit mode</a> for more information about how to flag a surface as being flagged as “Shadow Only”. See <a href="#model_settings">model settings and tools</a> for more information on how to flag an entire model as being “Shadow Only”.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="left"><img src="images/helper_surfaces_invisible.jpg" width="194" height="200" /></td>
+                        <td>
+                            <h2>Invisible surfaces</h2>
+                            <p>This can visualize all surfaces that are removed by the CSG algorithm. This is useful to, for instance, see a subtractive brush that is not touching any other geometry. A subtractive brush removes geometry and subtracting from nothing results in and shows nothing at runtime. Showing the invisible surfaces allows you to see the subtractive brush.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="left"><img src="images/helper_surfaces_collider.jpg" width="194" height="200" /></td>
+                        <td>
+                            <h2>Collider surfaces</h2>
+                            <p>You can set your model to be a collider only mesh. This surface mode lets you see those meshes since they are not visible at runtime. See <a href="#model_settings">model settings and tools</a> for more information.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="left"><img src="images/helper_surfaces_trigger.jpg" width="194" height="200" /></td>
+                        <td>
+                            <h2>Trigger surfaces</h2>
+                            <p>You can set your model to be a trigger mesh. This surface mode lets you see those meshes since they are not visible at runtime. See <a href="#model_settings">model settings and tools</a> for more information.</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <h1 id="selection">Selection and placement</h1>
+                <p>It’s worth mentioning that Real Time-CSG has some non standard behaviour that might not be obvious at first sight.</p>
+                <h2>Deep clicking</h2>
+                <p>If you click several times on the same spot, you will cycle between all brushes that beneath the cursor at that point. This makes it easier to select brushes that you might see in wireframe mode, yet is blocked by one or more other brushes.</p>
+                <h2>Marquee selection</h2>
+                <table>
+                    <tr>
+                        <td class="center"><img src="images/marquee_object.jpg" width="298" height="185" /></td>
+                        <td class="center"><img src="images/marquee_vertex.jpg" width="298" height="185" /></td>
+                    </tr>
+                    <tr>
+                        <td class="center">object mode marquee selection</td>
+                        <td class="center">Mesh mode marquee selection</td>
+                    </tr>
+                </table>
+                <p>In object edit mode you can select multiple brushes by clicking outside of your selection and dragging a rectangle that selects all the brushes that are inside it.</p>
+                <p>In mesh edit mode, however, this will select vertices, edges and polygons instead.</p>
+                <h2>“Handle as one object” </h2>
+                <table>
+                    <tr>
+                        <td class="left"><img src="images/handle_as_one_object.png" width="273" height="207" /></td>
+                        <td>
+                            <p>Every CSG operation has a toggle named “Handle as one object”, when enabled this will cause the entire contents of this operation to be handled as if it’s one object. This means that if you click on any brush contained in the operation, all the brushes within the operation will be selected.</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <h1 id="drag_and_drop">Drag & drop</h1>
+                <h2>Materials</h2>
+                <p>You can drag any material onto any brush surface by simply dragging the material onto the surface of the brush. If you hold shift while drag & dropping then the material will be applied to all surfaces of all the brushes of the current selection.</p>
+                <h2>Brushes/Operation Prefabs</h2>
+                <p>The moment you’ve turned your CSG operation or CSG brush into a prefab, the following options will be available to you:</p>
+                <table>
+                    <tr>
+                        <td class="left"><img src="images/drag_and_drop.png" width="445" height="103" /></td>
+                    </tr>
+                </table>
+                <h3>Instantiation</h3>
+                <p>This option allows you to determine if the prefab should be a reference (default unity behaviour) or a copy. The difference is that a copy will not be connected to the original prefab. This is useful for when you want to be able to quickly drag & drop some base shapes into your scene, perhaps as a starting point, but do not want them to be updated when the prefab might change.</p>
+                <h3>Placement</h3>
+                <p>This option allows you to define how the prefab should be placed into the scene.</p>
+                <ul>
+                    <li><p><b>Default</b> is used to place objects in the same way as unity.</p></li>
+                    <li><p><b>Align to surface</b> will place and rotate the prefab to align with the surface under the mouse cursor.</p></li>
+                    <li><p><b>Align Surface up</b> will place and rotate the prefab to align with the surface under the mouse cursor but it’s up direction will always be up. This is useful to place things that in the real world always point upwards.</p></li>
+                </ul>
+                <h3>Front</h3>
+                <p>Since it’s impossible to determine what was considered the front when creating the original prefab, you can specify here the original orientation of the prefab. The names match the names seen in the drop-down in the top right corner.</p>
+                <h3 id="passhtrough">Passthrough mode</h3>
+                <p>Suppose you want to first remove part of a wall using a subtractive brush, and then create the window frame using additive brushes. Without “passthrough mode” you could make an operation be only additive or subtractive, but not both. Which is problematic since you can only set the drag & drop settings on a brush or an operation. Fortunately passthrough mode lets you group multiple brushes (and sub-operations) inside an operation, and let the CSG algorithm ignore the operation itself.</p>
+                <h3>Dragging in the scene</h3>
+                <p>By holding shift while dragging an operation or brush in the scene, you can move the selected items over the surface beneath the mouse cursor in the same manner as you would during drag & drop.</p>
+                <p>You can set the same options as for the prefab on your operations & brushes.</p>
+                <table>
+                    <tr>
+                        <td class="left"><img src="images/ray_snapping.png" width="445" height="87" /></td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <h1 id="edit_modes">Edit modes</h1>
+                <p>Real Time-CSG has several different modes that focus on specific aspects of modeling with brushes. Each edit mode has it’s own helper window that will provide you with context specific information and functionality. This context specific information can depend on the current transform tool (see the <a href="#scene_view">scene view</a> for more information)</p>
+
+                <p>You can choose to have this edit window in the scene view, or as a <a href="#dockable_window">dockable window</a>. You can switch to the <a href="#dockable_window">dockable window</a> by pressing the x button of the helper window, or the x button on the edit mode window.</p>
+            </div>
+            <div>
+                <h1 id="object_edit_mode">Object edit mode</h1>
+                <p>When the Object edit mode is activated, each Transform Tool (see the <a href="#scene_view">scene view</a>) has different behavior.</p>
+                <p>Each transform tool will show a different tool window, unless there is no selection. All tool windows will show all the boolean operations (see <a href="#boolean_operations">boolean operations</a>) that you can set your operations or brushes to. Only operations have the “<i>Pass through</i>” option.</p>
+                <p>Another thing to realize is that all movements, rotations and scaling are rotated along with the grid, and this depends on the “<i>Transform Gizmo Toggles</i>” global/local settings. (see <a href="#grid">the grid</a> for more information)</p>
+                
+                <table>
+                    <tr>
+                        <td style="width:300px"><p>When the <b>move tool</b> is selected:<br />
+                                                   You will see the following tool window:</p></td>
+                        <td class="left"><img src="images/move_tool.png" width="160" height="22" /></td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td class="left"><img src="images/object_mode_move.png" width="285" height="157" /></td>
+                        <td>
+                            <p>Which allows you to manually move an object with the given offset and pressing the “Move” button. If you press “Clone + Move” instead you will move a copy of the original instead.</p>
+                            <p>When you move the object using the move handle in scene and then press D you will move a clone of the object you’re moving instead of the original.</p>
+                        </td>
+                    </tr>
+                </table>
+
+                <table>
+                    <tr>
+                        <td style="width:300px"><p>When the <b>rotate tool</b> is selected:<br />
+                                                   You will see the following tool window:</p></td>
+                        <td class="left"><img src="images/rotate_tool.png" width="160" height="22" /></td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td class="left"><img src="images/object_mode_rotate.png" width="285" height="193" /></td>
+                        <td>
+                            <p>The pivot is the point around you rotate all the selected objects.</p>
+                            <p>If the pivot mode of “Transform Gizmo Toggles” (see the scene view) is set to “center” then the pivot will always be set to the center of your selection.</p>
+                            <p>You will see a pivot gizmo in the scene that shows you the position of the pivot.</p>
+                            <p>If the pivot mode is set to “pivot” you can move it around in the scene.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <p>You can manually set the pivot in the bottom of the tool window. The “Recenter pivot” button will set the current pivot to the center of the selected objects.</p>
+                            <p>If you click the Rotate button you will manually rotate the selected objects around the pivot by the given offset rotation by the X / Y / Z rotation values in the Offset part of the tool window.</p>
+                        </td>
+                    </tr>
+                </table>
+
+                <table>
+                    <tr>
+                        <td style="width:300px"><p>When the <b>scale tool</b>,<br />
+                                                   Or the <b>rect tool</b> is selected:<br />
+                                                   You will see the following tool window:</p></td>
+                        <td class="left"><img src="images/scale_tool.png" width="160" height="22" /><br />
+                                         <img src="images/rect_tool.png" width="160" height="22" />
+                        </td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td class="left"><img src="images/object_mode_default.png" width="122" height="120" /></td>
+                        <td>
+                            <p>The tool window will only show the boolean operations mentioned in the beginning of this section.</p>
+                            <p>In the scene view you will see points on the bounds of your selection which you can drag to scale the selection within your bounds.</p>
+                            <p>Only the scale tool will show the scale gizmo at the center of the bounds.</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <h1 id="generate_edit_mode">Generate edit mode</h1>
+                <p>Currently the following brush generators are supported by Real Time-CSG. All generators only finalize their creation when you press enter (commit). You can cancel the creation of your brushes by pressing escape (cancel). Each generator has a tool window that also holds the default material to use for the brushes that are generated, which you can change into any material. Finally, there are the CSG operations that the generated brushes will use that you can set in the tool window.</p>
+                <h2>Extruded brushes</h2>
+                <p>The following brush generators basically allow you to create a 2D shape on any surface, and then extrude that shape into a 3D brush. If you extrude the shape inwards into another brush, it’ll automatically become a subtractive brush, if you extrude outwards away from the surface you’re extruding from, then it becomes an additive brush.</p>
+                <h3>Free-draw</h3>
+                <table>
+                    <tr>
+                        <td class="left"><img src="images/generator_free_draw.png" width="274" height="175" /></td>
+                        <td>
+                            <p>This generator allows you to create a generic shape that will automatically be split into multiple convex pieces if necessary. Extruding this shape will then create an operation containing multiple brushes.</p>
+                            <p>You can do this by clicking on the surface you want to build a shape on, creating the 2D polygon as you go along. At least 3 points are needed for this polygon to be valid.</p>
+                        </td>
+                    </tr>
+                </table>
+                <p>This 2D polygon can also not self-intersect, although this restriction will probably be removed in the future. When a polygon is not valid, it’ll turn red.</p>
+                <p>Once your shape is created, you can then still move the points around. If you hover over the polygon and drag it, you can extrude it. If you double click on your points or edges, you can turn them into curves. By clicking multiple times you cycle through all the curve/edge modes.</p>
+                <p>An edge can be straight (the default), a mirrored or a broken curve. A mirrored curve means that the curve is continuous on both sides of the edge point, a broken curve means that the edges on both sides of the point can go in different directions. This can mean that on one side of a point, the edge can be straight, but on the other side it’s a curve.</p>
+                <p>If you select an edge, you can then split this edge into two by clicking on the “insert point” button in the tool window for this generator. You can also set the number of times the curve is split into separate pieces in the “Split” text field. The height text field, unsurprisingly, allows you how far the shape is extruded. </p>
+                <p>In the mesh edit mode you can hold shift while dragging on a surface, and it’ll automatically turn into a Free-draw shape that you can then extrude. This allows you to easily extrude surfaces. Just as with regular free-draw shapes you can then still modify the points before you commit them by pressing enter. See <a href="#mesh_edit_mode">mesh edit mode</a> for more information</p>
+                <h3>Box</h3>
+                <table>
+                    <tr>
+                        <td class="left"><img src="images/generator_box.png" width="274" height="167" /></td>
+                        <td>
+                            <p>The box is a simpler primitive than the free-draw generator, which allows you to quickly create a 2D rectangle which you can then extrude.</p>
+                            <p>In its tool window you can manually set the width, length and height of the box.</p>
+                        </td>
+                    </tr>
+                </table>
+                <h3>Cylinder</h3>
+                <table>
+                    <tr>
+                        <td class="left"><img src="images/generator_cylinder.png" width="340" height="208" /></td>
+                        <td>
+                            <p>The cylinder allows you to create a circle on any surface, and like the free-draw and box generator, extrude it. You create the circle by first giving the center point and then dragging out the second point with the distance between them being the radius of the circle.</p>
+                            <p>The tool window allows you to set the “height”, “radius” or the number of “sides” the cylinder will have.</p>
+                        </td>
+                    </tr>
+                </table>
+                <p>Note that setting the number of sides to 3 allows you to create a triangle shaped shape instead.</p>
+                <table>
+                    <tr>
+                        <td class="center"><img src="images/cylinder_start_mid_side.jpg" width="193" height="167" /></td>
+                        <td class="center"><img src="images/cylinder_not_start_mid_side.jpg" width="193" height="167" /></td>
+                        <td class="center"><img src="images/cylinder_custom_offset.jpg" width="193" height="167" /></td>
+                    </tr>
+                    <tr>
+                        <td class="center">start mid side set</td>
+                        <td class="center">start mid side not set</td>
+                        <td class="center">angle set to 6 degrees</td>
+                    </tr>
+                </table>
+                <p>The sides of the circle start at the second point, unless the “Start mid side” is toggled in which case the second point is in the middle of one of the sides instead. The “angle” offset is used to manually rotate the cylinder by the given offset.</p>
+                <table>
+                    <tr>
+                        <td class="center"><img src="images/cylinder_non_smooth_shading.jpg" width="255" height="252" /></td>
+                        <td class="center"><img src="images/cylinder_smooth_shading.jpg" width="255" height="252" /></td>
+                    </tr>
+                    <tr>
+                        <td class="center">smooth shading not set</td>
+                        <td class="center">smooth shading set</td>
+                    </tr>
+                </table>
+                <p>The “Smooth shading” toggle allows you to make the sides of the cylinder use normal smoothing, or to give them a faceted look.</p> 
+                <table>
+                    <tr>
+                        <td class="center"><img src="images/cylinder_non_radial_caps.jpg" width="247" height="244" /></td>
+                        <td class="center"><img src="images/cylinder_radial_caps.jpg" width="247" height="244" /></td>
+                    </tr>
+                    <tr>
+                        <td class="center">radial caps not set</td>
+                        <td class="center">radial caps set</td>
+                    </tr>
+                </table>
+                <p>The “Radial caps“ toggle will allow you to determine if the caps of the cylinder will be single polygons or radial caps. The later will look like a fan spreading around the center point.</p> 
+                <p>Finally, “Fit shape” is there so when the cylinder has has a very low number of sides and the shape is irregular and smaller than a square, that it’s fitted to that square, which makes the size of the shape more predictable.</p> 
+                <h2>Other kinds of brushes</h2>
+                <p>Not all kinds of generated brushes are 2D shapes being extrapolated. Right now only spheres fall into this category, but more planned shapes fall into this category.</p>
+                <h3>Sphere</h3>
+                <table>
+                    <tr>
+                        <td class="left"><img src="images/generator_sphere.png" width="335" height="186" /></td>
+                        <td>
+                            <p>The sphere is created by clicking on a surface to determine the center of the sphere, and then dragging it out to get the radius of the sphere.</p>
+                            <p>If you toggle “Hemisphere” it’ll create a hemisphere instead of a sphere, with the bottom aligned with the surface you created the center point on.</p>
+                        </td>
+                    </tr>
+                </table>
+                <p>The “Smooth shading” toggle allows you to set if you want the sphere or hemisphere to look smooth, by turning normal smoothing on on all its surfaces, or faceted.</p>
+                <p>In the tool window, after you’ve created the sphere or hemisphere you can adjust the radius manually in “radius” text field.</p>
+                <p>The sphere is created by splitting the sides of a cube multiple times and placing these points on a mathematical the sphere. These splits are done in multiple directions. So when in the tool window, you set splits to one, each side of this cube will be split into 4 quads, that themselves are split into 2 triangles. You can increase the splits to make the sphere or hemisphere more smooth.</p>
+            </div>
+            <div>
+                <h1 id="mesh_edit_mode">The Mesh edit mode</h1>
+                <table>
+                    <tr>
+                        <td class="left"><img src="images/mesh_edit_mode.png" width="160" height="171" /></td>
+                        <td>
+                            <p>In this mode you can edit the control mesh of the brushes. You can select vertices, edges and polygons by clicking on them. If you hold the ctrl key while clicking on them you can toggle the selection on or off. You can also use a drag rectangle to select everything that’s inside the rectangle (see the “Marquee selection” section of <a href="#selection">selection and placement</a>).</p>
+                            <p>Once selected you can manipulate these vertices, edges and polygons to change the shape. Keep in mind that this shape will only be valid if it’s convex (see <a href="#brushes">what are brushes?</a>).</p>
+                        </td>
+                    </tr>
+                </table>
+                <p>Invalid brushes will show up with a red outline and will snap back to their last correct shape when no longer selected.</p>
+                <p>If you press delete all selected vertices will be deleted. If the resulting shape is invalid, the whole shape will be deleted. If you press M while selecting an edge, then the vertices of that edge will be moved to the center of this edge and merged.</p>
+                <p>If you click on the “Flip” X/Y/Z buttons the selected brushes will be mirrored on the X/Y or Z axis around the center of the selected brushes. The “Snap to grid” button will snap all selected vertices to the grid line closest to all vertices.</p>
+                <p>When the transform tool is set to <img src="images/move_tool.png" width="160" height="22" /> then you can move your selection. You can merge vertices together by moving them on top of each other, the edge between them will be removed. You can go to this mode by pressing the standard unity hotkey W.</p>
+                <p>When the transform tool is set to <img src="images/rotate_tool.png" width="160" height="22" /> then you can rotate your selection. You can go to this mode by pressing the standard unity hotkey E.</p>
+                <p>When the transform tool is set to <img src="images/scale_tool.png" width="160" height="22" /> or <img src="images/rect_tool.png" width="160" height="22" /> then you can scale your selection. You can use the standard unity hotkeys R (scale) and T (rect) for this</p>
+                <p>If you hold shift while dragging a polygon, then you can extrude the polygon into another brush. See the “free-draw” section in <a href="#generate_edit_mode">generate edit mode</a> for more details.</p>
+                <p>If you hold shift while dragging an edge or vertex then you will chamfer this edge or vertex instead. The further you drag, the wider the chamfer will be. The default material in the tool window will be used for the new surfaces created by the chamfering.</p>
+            </div>
+            <div>
+                <h1 id="clip_edit_mode">The Clip edit mode</h1>
+                <table>
+                    <tr>
+                        <td class="left"><img src="images/clipping_mode_1_brush.png" width="155" height="195" /></td>
+                        <td>
+                            <p>This edit mode is here to easily split or clip a brush or multiple brushes by an infinite plane that you define by first putting the mouse down on a surface and then dragging it over that surface to create a plane that intersects that line.</p>
+                            <p>After this you will see two points that you can then manipulate to change the plane. You can also click after this to create a third plane for more precise control over the splitting plane.</p>
+                            <p>The tool window will show three options on how to use the clipping plane, “Remove in front” / “Remove behind” which will let you specify which side of the plane will remove (parts of the) brushes, or “Split” that will create a new brush for each (part of each) brush that is removed.</p>                            
+                        </td>
+                    </tr>
+                </table>
+                <p>The tool window also shows the default material to use for the new surface area that is created when splitting or clipping brushes.If you’re satisfied with your result you can click on Commit (or press the hotkey Enter), otherwise you can press “Cancel” (or press the hotkey Escape).</p>
+            </div>
+            <div>
+                <h1 id="surface_edit_mode">The Surface edit mode</h1>
+                <table>
+                    <tr>
+                        <td class="left"><img src="images/surface_edit_mode.png" width="223" height="375" /></td>
+                        <td>
+                            <p>In this edit mode you can modify the texturing of the surfaces of your brushes. You can click to select your surfaces. If you hold control while clicking you can toggle the selection of your surfaces. If you hold shift and hold your left mouse button then you can select all the surfaces that will be underneath your mouse while you move your mouse.</p>
+                            <p>The tool window shows the material of the current selected surface and allows you to change it.</p>
+                            <p>You can manually change the offset, scale and rotation of your texture in the tool window. The -90/+90 buttons are shortcut buttons to quickly rotate your texture by 90 degrees in case it’s sideways or upside-down.</p>
+                            <p>The “UV-Justify” buttons try to align the texture to particular corners of your surfaces. The “C” button centers your texture on your surface.</p>
+                            <p>The “Fit” buttons will try to make sure that the scale and position of your texture will fit as tightly as possible on your surface. You can choose to only do this in the U or V direction, or both (UV).</p>
+                        </td>
+                    </tr>
+                </table>
+                <p>The “Reverse” buttons will reverse the direction of your texturing in the U, V or both UV directions. The “Reset” buttons will use the default texture coordinates in the U, V or both UV directions.</p>
+                <p>The “UV scale” buttons allow you to quickly multiply the scale by 2, or divide it by 2.</p>
+                <p>The “Discard” button will essentially mark a surface as not being part of the final mesh created for the model this brush in it. It will not be rendered or be part of the collision mesh. The “Shadow-Only” is like the “Discard” button except that it’ll still cast shadows. The “Visible” button will make the surface behave like a regular surface again. Note that if you cannot see your surface you can always turn on discarded or shadow-only surfaces in the helper surfaces pop-up to make Real Time-CSG render them. See the <a href="#scene_view">scene view</a> for more details.</p>
+                <p>The “Lock texture to object” toggle ensures that when you move a surface around in the world it’s texture coordinates will move with it, otherwise the texturing will stay in the same spot even when the surface is moving.</p>
+                <p>You can copy a surface from one surface to another by holding the G key and clicking on the first surface to ‘get’ the material, and then every next surface you click on will copy the previous material. If you drag your mouse over multiple surface while holding the G key then the surface materials underneath your mouse will ‘smear’ into each other, making sure that the textures are correctly rotated/scaled and moved to avoid seams.</p>
+                <p>When the transform tools are set to <img src="images/move_tool.png" width="160" height="22" /> then you can drag the texture over the surface of your brushes. Keep in mind that this movement is snapped to the grid.</p>
+                <p class="border">Note: Texture coordinates repeat over every whole number, meaning that if your snapping is set to 1 then you won’t see any changes when moving your texture over the grid.</p>
+                <p>If you turn off snapping, or decrease the snapping size you can then move the texture.</p>
+                <table>
+                    <tr>
+                        <td class="center"><img src="images/surface_rotation.jpg" width="366" height="309" /></td>
+                    </tr>
+                    <tr>
+                        <td class="center">surface texture rotation</td>
+                    </tr>
+                </table>
+                <p>When the transform tools are set to <img src="images/rotate_tool.png" width="160" height="22" /> then when you click on the surface of your brush, and then drag outwards, a circle will appear. When you then move your mouse around that circle your texture will rotate around that original point, following your mouse.</p>
+            </div>
+            <div>
+                <h1 id="model_settings">Model settings and tools</h1>
+                <img src="images/surface_edit_mode.png" width="223" height="375" style="float:left; padding-right: 10px; padding-bottom: 10px;" />
+                <p>The model holds all the meshes that are generated by all the brushes and operations that are inside it. At runtime all the brushes and operations are removed. Usually the meshes that are inside the model are hidden to reduce the clutter, but if you want to inspect them you can use toggle the “Show Meshes” checkbox.</p>
+                <p>Keep in mind that these meshes will be updated and you should not try to modify them yourself since all your changes will be overwritten eventually.</p>
+                <p>If you want to generate a mesh without a color channel, without tangents, normals or an UV1  channel, then you can use the checkboxes to avoid those channels to be generated. Usually you want to keep those around however. At the bottom you can see some quick statistics on all the brushes in your model.</p>
+                <br style="clear:both" />
+                <div class="border">
+                    <img src="images/lightmap_static.png" width="275" height="248"style="float:right; padding-left: 10px;" />
+                    <p>Note: When the model’s “Lightmap Static” flag is set, the lightmap UVs are automatically updated about a second after you’ve stopped modifying the model. Real Time-CSG calls a Unity method here that creates the lightmap UVs for the modified meshes, which is unfortunately somewhat slow.</p>
+                    <p>Note: All model flags and tags are automatically assigned to its meshes.</p>
+                    <br style="clear:both" />
+                </div>
+                
+                <h2>Behaviour</h2>
+                <p>This section has a single option called “Inverted world” which will make the whole model solid by default. This allows you to subtract from the world instead of add to it. This is useful for when your entire level is, for instance, underground and you don’t need to have the outer shell for your geometry.</p>
+                
+                <h2>Physics</h2>
+                <p>In this section you can determine how the generated meshes interact with physics. If the “Generate Collider” toggle is set a collider is generated for all the visible geometry. If you then also set “Model is trigger” then the trigger toggle will be set on the collider. If you wish the collider to be convex you can toggle the “Convex Collider” setting. Note if you’ve set the “Model Is Trigger” setting then for performance reasons, it is recommended that you also set the “Convex Collider” setting.</p>
+                <p>If you set the “Auto RigidBody” toggle, a RigidBody will automatically, when necessary, be created or destroyed for all the generated colliders, and all the appropriate default settings will be set for various scenarios.</p>
+                <p>The “Default Physics Material” allows you to set the physics material for all the created colliders. In a future version physics materials will be settable per surface.</p>
+                
+                <h2>Rendering</h2>
+                <p>A model might not need to be drawn if it’s an invisible collider or a trigger. If you toggle the “Do Not Render” setting, then the model will not create MeshRenderers for this model so will not be visible.</p>
+                <p>In the “Cast Shadows” drop down you can determine how shadows will interact with this model. Here you can turn shadows off, or make the mesh double sided for shadow rendering. Or set the whole model to be shadow casting only. Note that you can also set individual surfaces to be shadow only, see the <a href="#surface_edit_mode">surface edit mode</a> for more details. </p>
+                <p>Finally there’s the “Receive Shadows” toggle that allows you to turn shadows showing up on your model on or off.</p>
+                <p>Note that some of these settings will make your model invisible, but you can still see your invisible model in the editor if you turn on the appropriate helper surfaces (see the <a href="#scene_view">scene view</a> for more details).</p>
+
+                <h2>Lighting</h2>
+                <p>In the lighting section of the model inspector there is currently one option “Preserve UVs” which will set the similarly named setting in the lighting window for you on all your meshes. More lighting options will be added in this section over time. If you need any particular functionality, be sure to request it in the <a href="https://prenominal.nl/forum3">forum</a> or <a href="https://github.com/LogicalError/realtime-CSG-for-unity/issues">create a ticket</a>.</p>
+                
+                <h2>Exporting</h2>
+                <p>In this section of the model inspector you can export your model to several formats by choosing your desired format from the dropdown and clicking on the “Export to ..” button. Once exported your model will be replaced by another representation, but you’ll have the option to revert back to the original model if you so desire.</p>
+                <h3>A text based FBX file</h3>
+                <p>This is a common format used by DCC (Digital Content Creation) tools and allows you to load your mesh into another package such as Maya or 3DS max, edit it, and let Unity re-import it. The FBX will be instantiated into the model, replacing the CSG model, which will be hidden and removed at built time. If you update the FBX file outside of unity, then this FBX instance will be updated in your scene.</p>
+                <h3>A <i>scene stored</i> Unity mesh</h3>
+                <p>The scene based Unity mesh is useful if you want to edit the mesh with another asset from the asset store. Keep in mind that this mesh is stored <i>in your scene itself</i>. Unfortunately this means it will not work if you try to create a prefab out of this. This is unfortunately a Unity limitation.</p>
+            </div>
+        </div>
+     </center>
+    </body>
+</html>

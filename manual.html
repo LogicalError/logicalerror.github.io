@@ -718,10 +718,13 @@ See the <a href="#surface_edit">surface edit mode</a> for more information about
                 <h2>Lighting</h2>
                 <p>In the lighting section of the model inspector there is currently one option “Preserve UVs” which will set the similarly named setting in the lighting window for you on all your meshes. More lighting options will be added in this section over time. If you need any particular functionality, be sure to request it in the <a href="https://prenominal.nl/forum3">forum</a> or <a href="https://github.com/LogicalError/realtime-CSG-for-unity/issues">create a ticket</a>.</p>
                 
+
                 <h2>Exporting</h2>
-                <p>In this section of the model inspector you can export your model to several formats by choosing your desired format from the dropdown and clicking on the “Export to ..” button. Once exported your model will be replaced by another representation, but you’ll have the option to revert back to the original model if you so desire.</p>
+                <p>In this section of the model inspector you can export your model to several formats by choosing your desired format from the dropdown and clicking on the “Export to ..” button. Once exported your model will be replaced by whatever you exported your model to. Also a “CSG model exported” component is added to the gameobject that held your model, which will remember the original CSG model for you. The original CSG model and all its operations and brushes are still there, they’re all hidden from you to avoid the clutter. These will automatically be removed at build time, so you won’t pay any cost for them at runtime. If you want to revert to your original CSG model, you can click on “Revert back to CSG model”. If you choose to remove your original CSG model permanently you can click on “Remove hidden CSG model”.</p>
+                
                 <h3>A text based FBX file</h3>
                 <p>This is a common format used by DCC (Digital Content Creation) tools and allows you to load your mesh into another package such as Maya or 3DS max, edit it, and let Unity re-import it. The FBX will be instantiated into the model, replacing the CSG model, which will be hidden and removed at built time. If you update the FBX file outside of unity, then this FBX instance will be updated in your scene.</p>
+                
                 <h3>A <i>scene stored</i> Unity mesh</h3>
                 <p>The scene based Unity mesh is useful if you want to edit the mesh with another asset from the asset store. Keep in mind that this mesh is stored <i>in your scene itself</i>. Unfortunately this means it will not work if you try to create a prefab out of this. This is unfortunately a Unity limitation.</p>
             </div>

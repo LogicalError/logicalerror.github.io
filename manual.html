@@ -529,7 +529,9 @@ See the <a href="#surface_edit">surface edit mode</a> for more information about
                 <h1 id="generate_edit_mode">Generate edit mode</h1>
                 <p>Currently the following brush generators are supported by Real Time-CSG. All generators only finalize their creation when you press enter (commit). You can cancel the creation of your brushes by pressing escape (cancel). Each generator has a tool window that also holds the default material to use for the brushes that are generated, which you can change into any material. Finally, there are the CSG operations that the generated brushes will use that you can set in the tool window.</p>
                 <h2>Extruded brushes</h2>
-                <p>The following brush generators basically allow you to create a 2D shape on any surface, and then extrude that shape into a 3D brush. If you extrude the shape inwards into another brush, it’ll automatically become a subtractive brush, if you extrude outwards away from the surface you’re extruding from, then it becomes an additive brush.</p>
+                <p>The following brush generators basically allow you to create a 2D shape on any surface, and then extrude that shape into a 3D brush.</p>
+                <p>If you extrude the shape inwards into another brush, it’ll automatically become a subtractive brush, if you extrude outwards away from the surface you’re extruding from, then it becomes an additive brush.</p>
+                <p>The tool will use the default height when you press enter before you start extruding. The default height will automatically be set to the height of the last extruded brush, or you can set it manually in the tool window.</p>
                 <h3>Free-draw</h3>
                 <table>
                     <tr>

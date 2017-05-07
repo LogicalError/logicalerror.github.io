@@ -419,10 +419,10 @@ See the <a href="#surface_edit">surface edit mode</a> for more information about
             </div>
             <div>
                 <h1 id="drag_and_drop">Drag & drop</h1>
-                <h2>Materials</h2>
+                <h2>Drag & dropping Materials onto brushes</h2>
                 <p>You can drag any material onto any brush surface by simply dragging the material onto the surface of the brush. If you hold shift while drag & dropping then the material will be applied to all surfaces of all the brushes of the current selection.</p>
-                <h2>Brushes/Operation Prefabs</h2>
-                <p>By default dragging will snap to the grid if snapping is enabled, but by holding control you can reverse this behaviour. This means if the grid is enabled, holding control will disable it while dragging. If the grid is disabled, however, holding control will enable the snapping instead.</p>
+                <h2>Drag & dropping Brushes/Operation Prefabs into the scene</h2>
+                <p>By default dragging will snap to the grid if snapping is enabled, but by holding control you can reverse this behaviour. This means if the grid is enabled, holding control will disable it while dragging. If the grid is disabled, however, holding control will enable the snapping instead. You can drag & drop onto both MeshRenderers (that have MeshColliders) or onto CSG generated geometry.</p>
                 <p>The moment you’ve turned your CSG operation or CSG brush into a prefab, the following options will be available to you:</p>
                 <table>
                     <tr>
@@ -440,9 +440,11 @@ See the <a href="#surface_edit">surface edit mode</a> for more information about
                 </ul>
                 <h3>Front</h3>
                 <p>Since it’s impossible to determine what was considered the front when creating the original prefab, you can specify here the original orientation of the prefab. The names match the names seen in the drop-down in the top right corner.</p>
-                <h3 id="passhtrough">Passthrough mode</h3>
+                <h2>Drag & dropping Meshes into the scene</h2>
+                <p>When you drag & drop a mesh, which is not a CSG model, into the scene then it’ll snap to the grid as long as real time-CSG is enabled. It’ll also snap against anything the surfaces behind the cursors just like a regular CSG model would, but unfortunately, due to Unity limitations, there is no way to set up the surface alignment like with brushes. Snapping your meshes to another mesh only works the other mesh has a collider.</p>
+                <h2 id="passhtrough">Passthrough mode</h2>
                 <p>Suppose you want to first remove part of a wall using a subtractive brush, and then create the window frame using additive brushes. Without “passthrough mode” you could make an operation be only additive or subtractive, but not both. Which is problematic since you can only set the drag & drop settings on a brush or an operation. Fortunately passthrough mode lets you group multiple brushes (and sub-operations) inside an operation, and let the CSG algorithm ignore the operation itself.</p>
-                <h3>Dragging in the scene</h3>
+                <h2>Dragging in the scene</h2>
                 <p>By holding shift while dragging an operation or brush in the scene, you can move the selected items over the surface beneath the mouse cursor in the same manner as you would during drag & drop.</p>
                 <p>You can set the same options as for the prefab on your operations & brushes.</p>
                 <table>
